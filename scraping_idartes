@@ -1,0 +1,52 @@
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://www.idartes.gov.co/es/agenda"
+response = requests.get(url)
+response.encoding = "utf-8"
+soup = BeautifulSoup(response.text, "html.parser")
+
+eventos = []
+
+contenedores = soup.find_all("div", class_="cajashomeeventos")
+
+for cont in contenedores:
+    # Tipo
+    tipo_elem = cont.find("div", class_="ctg-ev-24 position-absolute bg-white")
+    tipo = tipo_elem.get_text(strip=True) if tipo_elem else "N/A"
+
+    # Nombre del evento (dos métodos: texto o extraer de href)
+    nombre_elem = cont.select_one('a[hreflang="es"]')
+    if nombre_elem:
+        nombre = nombre_elem.get_text(strip=True)
+        if not nombre:  # Si está vacío, usamos el href
+            href = nombre_elem.get("href", "")
+            if href:
+                slug = href.strip("/").split("/")[-1]
+                nombre = slug.replace("-", " ").title()
+    else:
+        nombre = "N/A"
+
+    # Fecha (texto completo dentro del bloque fecha-ev24)
+    fecha_elem = cont.find("div", class_="fecha-ev24")
+    fecha = fecha_elem.get_text(" ", strip=True) if fecha_elem else "N/A"
+
+    # Tipo de ingreso
+    ingreso_elem = cont.find("div", class_="tipo_cajashomeeventos font2")
+    ingreso = ingreso_elem.get_text(strip=True) if ingreso_elem else "N/A"
+
+    eventos.append({
+        "tipo": tipo,
+        "nombre": nombre,
+        "fecha": fecha,
+        "ingreso": ingreso
+    })
+
+# Imprimir
+for ev in eventos:
+    print("🎭 Evento")
+    print(f"Tipo: {ev['tipo']}")
+    print(f"Nombre: {ev['nombre']}")
+    print(f"Fecha(s): {ev['fecha']}")
+    print(f"Ingreso: {ev['ingreso']}")
+    print("-" * 40)

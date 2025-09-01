@@ -1,0 +1,29 @@
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://teatroastorplaza.com"
+response = requests.get(url, timeout=15)
+response.encoding = "utf-8"
+soup = BeautifulSoup(response.text, "html.parser")
+
+eventos = []
+
+# Nombres de eventos (h2)
+nombres = soup.find_all("h2", class_="elementor-heading-title")
+
+# Fechas (span con estilo específico)
+fechas = soup.find_all("span", style="vertical-align: inherit;")
+
+# Emparejar nombre y fecha (suponiendo que están en el mismo orden)
+for nombre_elem, fecha_elem in zip(nombres, fechas):
+    nombre = nombre_elem.get_text(strip=True)
+    fecha = fecha_elem.get_text(strip=True)
+    eventos.append({"nombre": nombre, "fecha": fecha})
+
+# Imprimir resultados
+for ev in eventos:
+    print("🎭 Evento")
+    print(f"Nombre: {ev['nombre']}")
+    print(f"Fecha: {ev['fecha']}")
+    print("-" * 40)
+
