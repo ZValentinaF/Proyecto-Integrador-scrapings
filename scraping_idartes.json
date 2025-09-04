@@ -1,0 +1,230 @@
+[
+    {
+        "tipo": "Artes Plásticas y Visuales",
+        "nombre": "Bordar La Palabra",
+        "fecha": "26 de Agosto al 7 de Octubre",
+        "ingreso": "Inscripción previa"
+    },
+    {
+        "tipo": "Artes Audiovisuales",
+        "nombre": "5Deg Ciclo Restaurados En La Cinemateca De Bogota",
+        "fecha": "3 de Septiembre al 14 de Septiembre",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Teatro Union En La Sala Gaitan",
+        "fecha": "5 de Septiembre - 7:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "Sobre Mancuspias Y Otros Juegos",
+        "fecha": "5 de Septiembre - 7:30 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Multidisciplinar",
+        "nombre": "Regresa La Zarzuela Maria La O Al Teatro Jorge Eliecer Gaitan",
+        "fecha": "5 de Septiembre al 6 de Septiembre",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Literatura",
+        "nombre": "Vivas Nos Queremos Vivas Nos Leemos",
+        "fecha": "6 de Septiembre - 11:00 am",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "Obra Ja Shull Y El Gran Jaguar Azul",
+        "fecha": "6 de Septiembre - 11:30 am",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Fusion De Ritmos En La Edicion Numero 28 De Jazz Al Parque",
+        "fecha": "6 de Septiembre al 7 de Septiembre",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "Un Concierto Mediado Por La Ludica Interactiva Del Canto El Cuerpo Y El Movimiento",
+        "fecha": "6 de Septiembre - 3:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "Ciudad Bolivar Llega La Obra Alimal Para Ninas Y Ninos De 0 5 Anos",
+        "fecha": "6 de Septiembre - 5:00 pm",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Multidisciplinar",
+        "nombre": "Sinergia Del Movimiento Una Nueva Version De Tablas Al Aire De Los Escenarios",
+        "fecha": "7 de Septiembre - 12:00 pm",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "Un Concierto Unico Con La Compania Chelele Y Un Son En Mi Mansion",
+        "fecha": "7 de Septiembre - 3:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "La Obra Fratello De Francia Ciudad Bolivar",
+        "fecha": "7 de Septiembre - 3:00 pm",
+        "ingreso": "Inscripción previa"
+    },
+    {
+        "tipo": "Multidisciplinar",
+        "nombre": "Festival Mamarracho Fiesta Casera Payasa Vol 8 Llega Al Barrio",
+        "fecha": "11 de Septiembre - 10:00 am",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Salsa Al Parque Llega Tu Barrio Con Escenarios Moviles De Idartes",
+        "fecha": "12 de Septiembre - 5:00 pm",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Fatso Blues Y Jazz",
+        "fecha": "12 de Septiembre - 7:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "Efimero De La Compania Maison Du Silence Llega Al Teatro El Parque",
+        "fecha": "13 de Septiembre - 3:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Escuchando Las Estrellas Un Concierto Para Las Infancias",
+        "fecha": "13 de Septiembre al 14 de Septiembre",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "Disfrute En Familia De La Matine Infantil Un Mundo Magico",
+        "fecha": "14 de Septiembre - 11:00 am",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "La Obra Uh Gar De Nidos Llega Al Museo Nacional",
+        "fecha": "14 de Septiembre - 11:30 am",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "Recien Oidos Un Concierto Para Madres Gestantes Bebes Y Ninos De Primera Infancia",
+        "fecha": "14 de Septiembre - 3:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Multidisciplinar",
+        "nombre": "Reverie Una Experiencia Inmersiva De Folclor En 360O",
+        "fecha": "14 de Septiembre - 4:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Lucas Hill Presenta Su Nuevo Album El Sol Sale Tambien",
+        "fecha": "18 de Septiembre - 8:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Dueto De Guitarra Y Violin En El Barrio Los Naranjos En Bosa Con Culturas En",
+        "fecha": "19 de Septiembre - 10:30 am",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Los Sonidos Del Metal Se Toman Escenarios Moviles En El Caleidoscopio Sonoro",
+        "fecha": "19 de Septiembre - 5:00 pm",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Aldo Zolev La Vida Hecha Musica",
+        "fecha": "19 de Septiembre - 7:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Literatura",
+        "nombre": "Festival Lectura Bajo Los Arboles 0",
+        "fecha": "20 de Septiembre - 10:00 am",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Artes Plásticas y Visuales",
+        "nombre": "Bienal Internacional De Arte Y Ciudad Bog25",
+        "fecha": "20 de Septiembre al 9 de Noviembre",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "El Tortazo Blues Regresa La Media Torta",
+        "fecha": "20 de Septiembre - 1:00 pm",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "Ila La Nina Tejedora Un Musical En El Teatro El Parque Para Grandes Y Ninos",
+        "fecha": "20 de Septiembre - 3:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Multidisciplinar",
+        "nombre": "La Gran Familia Con Cocoloco Y La Gata Cirko",
+        "fecha": "20 de Septiembre - 8:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Disfrute Del Festival Africa En Bogota En Escenarios Moviles De Idartes",
+        "fecha": "26 de Septiembre - 5:00 pm",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Gabriela Ponce Llega La Sala Gaitan",
+        "fecha": "26 de Septiembre - 7:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Noche De Gala Festival Africa En Bogota",
+        "fecha": "26 de Septiembre - 8:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Artes Plásticas y Visuales",
+        "nombre": "Encuentro De Palabra Arquitectura Emocional Cobijos Y Moradas 0",
+        "fecha": "28 de Septiembre - 2:00 pm",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Multidisciplinar",
+        "nombre": "Las Hermanas Peligro De Chile Llegan Suba Con El Programa Culturas En",
+        "fecha": "29 de Septiembre - 5:00 pm",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "La Quinta Del Lobo Presenta Hybris",
+        "fecha": "3 de Octubre - 8:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Artes Plásticas y Visuales",
+        "nombre": "Encuentro De Palabra Arquitectura Emocional Cobijos Y Moradas 1",
+        "fecha": "19 de Octubre - 2:00 pm",
+        "ingreso": "Entrada libre"
+    }
+]
