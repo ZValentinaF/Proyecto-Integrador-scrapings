@@ -109,6 +109,12 @@
     },
     {
         "tipo": "Niños y Jóvenes",
+        "nombre": "Un Concierto Para Madres Gestantes Bebes Y Ninas Y Ninos De Primera Infancia",
+        "fecha": "14 de Septiembre - 11:00 am",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
         "nombre": "Disfrute En Familia De La Matine Infantil Un Mundo Magico",
         "fecha": "14 de Septiembre - 11:00 am",
         "ingreso": "Entrada libre"
@@ -118,12 +124,6 @@
         "nombre": "La Obra Uh Gar De Nidos Llega Al Museo Nacional",
         "fecha": "14 de Septiembre - 11:30 am",
         "ingreso": "Entrada libre"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Recien Oidos Un Concierto Para Madres Gestantes Bebes Y Ninos De Primera Infancia",
-        "fecha": "14 de Septiembre - 3:00 pm",
-        "ingreso": "Entrada con costo"
     },
     {
         "tipo": "Multidisciplinar",
@@ -175,7 +175,7 @@
     },
     {
         "tipo": "Niños y Jóvenes",
-        "nombre": "Ila La Nina Tejedora Un Musical En El Teatro El Parque Para Grandes Y Ninos",
+        "nombre": "Ila La Nina Tejedora Un Musical Para Grandes Y Ninos",
         "fecha": "20 de Septiembre - 3:00 pm",
         "ingreso": "Entrada con costo"
     },
@@ -183,6 +183,24 @@
         "tipo": "Multidisciplinar",
         "nombre": "La Gran Familia Con Cocoloco Y La Gata Cirko",
         "fecha": "20 de Septiembre - 8:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "Al Teatro El Parque Llega La Obra Al Otro Lado",
+        "fecha": "21 de Septiembre - 3:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Dueto De Trombon Y Piano",
+        "fecha": "23 de Septiembre - 5:00 pm",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Elkin Robinson Y Guis Guis Bou Bess Inauguran El Festival Africa En Bogota",
+        "fecha": "25 de Septiembre - 7:00 pm",
         "ingreso": "Entrada con costo"
     },
     {
@@ -194,6 +212,12 @@
     {
         "tipo": "Música",
         "nombre": "Gabriela Ponce Llega La Sala Gaitan",
+        "fecha": "26 de Septiembre - 7:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "La Muchacha Y Guache Presentan Sea Maiz",
         "fecha": "26 de Septiembre - 7:00 pm",
         "ingreso": "Entrada con costo"
     },
@@ -226,5 +250,11 @@
         "nombre": "Encuentro De Palabra Arquitectura Emocional Cobijos Y Moradas 1",
         "fecha": "19 de Octubre - 2:00 pm",
         "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Zeta Bosio El Bajista Original De Soda Stereo Hara Temblar Bogota",
+        "fecha": "24 de Octubre - 8:00 pm",
+        "ingreso": "Entrada con costo"
     }
 ]
