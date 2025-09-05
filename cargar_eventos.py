@@ -17,13 +17,14 @@ FUENTES = {
     },
     "pablobon": {
         "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/main/scraping_teatropablotobon.json",
-        "tabla": "teatropablobon_eventos"
+        "tabla": "teatropablobon_eventos"   
     },
     "plaza": {
         "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/main/scraping_teatroplasa.json",
         "tabla": "teatroplaza_eventos"
     }
 }
+
 
 def cargar_datos():
     try:
@@ -57,12 +58,14 @@ def cargar_datos():
 
                 elif tabla == "teatropablobon_eventos":
                     cur.execute(f"""
-                        INSERT INTO {tabla} (nombre, fecha, raw)
-                        VALUES (%s, %s, %s)
+                        INSERT INTO {tabla} (tipo, nombre, fecha, ingreso, raw)
+                        VALUES (%s, %s, %s, %s, %s)
                         ON CONFLICT (nombre, fecha) DO NOTHING;
                     """, (
+                        ev.get("tipo", "N/A"),
                         ev.get("nombre", "N/A"),
                         ev.get("fecha", "N/A"),
+                        ev.get("ingreso", "N/A"),
                         json.dumps(ev, ensure_ascii=False)
                     ))
 
