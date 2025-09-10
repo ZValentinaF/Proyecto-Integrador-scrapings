@@ -12,72 +12,6 @@
         "ingreso": "Entrada con costo"
     },
     {
-        "tipo": "Música",
-        "nombre": "Teatro Union En La Sala Gaitan",
-        "fecha": "5 de Septiembre - 7:00 pm",
-        "ingreso": "Entrada con costo"
-    },
-    {
-        "tipo": "Teatro",
-        "nombre": "Sobre Mancuspias Y Otros Juegos",
-        "fecha": "5 de Septiembre - 7:30 pm",
-        "ingreso": "Entrada con costo"
-    },
-    {
-        "tipo": "Multidisciplinar",
-        "nombre": "Regresa La Zarzuela Maria La O Al Teatro Jorge Eliecer Gaitan",
-        "fecha": "5 de Septiembre al 6 de Septiembre",
-        "ingreso": "Entrada con costo"
-    },
-    {
-        "tipo": "Literatura",
-        "nombre": "Vivas Nos Queremos Vivas Nos Leemos",
-        "fecha": "6 de Septiembre - 11:00 am",
-        "ingreso": "Entrada libre"
-    },
-    {
-        "tipo": "Teatro",
-        "nombre": "Obra Ja Shull Y El Gran Jaguar Azul",
-        "fecha": "6 de Septiembre - 11:30 am",
-        "ingreso": "Entrada libre"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "Fusion De Ritmos En La Edicion Numero 28 De Jazz Al Parque",
-        "fecha": "6 de Septiembre al 7 de Septiembre",
-        "ingreso": "Entrada libre"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Un Concierto Mediado Por La Ludica Interactiva Del Canto El Cuerpo Y El Movimiento",
-        "fecha": "6 de Septiembre - 3:00 pm",
-        "ingreso": "Entrada con costo"
-    },
-    {
-        "tipo": "Teatro",
-        "nombre": "Ciudad Bolivar Llega La Obra Alimal Para Ninas Y Ninos De 0 5 Anos",
-        "fecha": "6 de Septiembre - 5:00 pm",
-        "ingreso": "Entrada libre"
-    },
-    {
-        "tipo": "Multidisciplinar",
-        "nombre": "Sinergia Del Movimiento Una Nueva Version De Tablas Al Aire De Los Escenarios",
-        "fecha": "7 de Septiembre - 12:00 pm",
-        "ingreso": "Entrada libre"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Un Concierto Unico Con La Compania Chelele Y Un Son En Mi Mansion",
-        "fecha": "7 de Septiembre - 3:00 pm",
-        "ingreso": "Entrada con costo"
-    },
-    {
-        "tipo": "Teatro",
-        "nombre": "La Obra Fratello De Francia Ciudad Bolivar",
-        "fecha": "7 de Septiembre - 3:00 pm",
-        "ingreso": "Inscripción previa"
-    },
-    {
         "tipo": "Multidisciplinar",
         "nombre": "Festival Mamarracho Fiesta Casera Payasa Vol 8 Llega Al Barrio",
         "fecha": "11 de Septiembre - 10:00 am",
@@ -238,6 +172,12 @@
         "nombre": "Las Hermanas Peligro De Chile Llegan Suba Con El Programa Culturas En",
         "fecha": "29 de Septiembre - 5:00 pm",
         "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "El Colegio Del Cuerpo Presenta Suite Akhunov",
+        "fecha": "1 de Octubre - 8:00 pm",
+        "ingreso": "Entrada con costo"
     },
     {
         "tipo": "Teatro",
