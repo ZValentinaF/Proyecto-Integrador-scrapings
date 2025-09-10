@@ -5,7 +5,7 @@ import json
 DB_CONFIG = {
     "host": "awsaurorapg17-instance-1.cav2004g2f8p.us-east-1.rds.amazonaws.com",
     "port": "5432",
-    "dbname": "Eventos",
+    "dbname": "QueHayPaHacer",
     "user": "postgres",
     "password": "postgres"
 }
