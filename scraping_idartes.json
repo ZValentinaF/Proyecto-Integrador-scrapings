@@ -6,64 +6,10 @@
         "ingreso": "Inscripción previa"
     },
     {
-        "tipo": "Artes Audiovisuales",
-        "nombre": "5Deg Ciclo Restaurados En La Cinemateca De Bogota",
-        "fecha": "3 de Septiembre al 14 de Septiembre",
-        "ingreso": "Entrada con costo"
-    },
-    {
-        "tipo": "Multidisciplinar",
-        "nombre": "Festival Mamarracho Fiesta Casera Payasa Vol 8 Llega Al Barrio",
-        "fecha": "11 de Septiembre - 10:00 am",
+        "tipo": "Literatura",
+        "nombre": "Ciclo De Lecturas Para Acompanar El Duelo",
+        "fecha": "17 de Septiembre al 6 de Noviembre",
         "ingreso": "Entrada libre"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "Salsa Al Parque Llega Tu Barrio Con Escenarios Moviles De Idartes",
-        "fecha": "12 de Septiembre - 5:00 pm",
-        "ingreso": "Entrada libre"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "Fatso Blues Y Jazz",
-        "fecha": "12 de Septiembre - 7:00 pm",
-        "ingreso": "Entrada con costo"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Efimero De La Compania Maison Du Silence Llega Al Teatro El Parque",
-        "fecha": "13 de Septiembre - 3:00 pm",
-        "ingreso": "Entrada con costo"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "Escuchando Las Estrellas Un Concierto Para Las Infancias",
-        "fecha": "13 de Septiembre al 14 de Septiembre",
-        "ingreso": "Entrada con costo"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Un Concierto Para Madres Gestantes Bebes Y Ninas Y Ninos De Primera Infancia",
-        "fecha": "14 de Septiembre - 11:00 am",
-        "ingreso": "Entrada con costo"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Disfrute En Familia De La Matine Infantil Un Mundo Magico",
-        "fecha": "14 de Septiembre - 11:00 am",
-        "ingreso": "Entrada libre"
-    },
-    {
-        "tipo": "Teatro",
-        "nombre": "La Obra Uh Gar De Nidos Llega Al Museo Nacional",
-        "fecha": "14 de Septiembre - 11:30 am",
-        "ingreso": "Entrada libre"
-    },
-    {
-        "tipo": "Multidisciplinar",
-        "nombre": "Reverie Una Experiencia Inmersiva De Folclor En 360O",
-        "fecha": "14 de Septiembre - 4:00 pm",
-        "ingreso": "Entrada con costo"
     },
     {
         "tipo": "Música",
@@ -87,6 +33,12 @@
         "tipo": "Música",
         "nombre": "Aldo Zolev La Vida Hecha Musica",
         "fecha": "19 de Septiembre - 7:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Nicoyembe Y Su Banda Pre Festival Africa En Bogota En El Ensueno",
+        "fecha": "19 de Septiembre - 7:30 pm",
         "ingreso": "Entrada con costo"
     },
     {
@@ -114,10 +66,28 @@
         "ingreso": "Entrada con costo"
     },
     {
+        "tipo": "Música",
+        "nombre": "Raices Tumaquenas Musica De Marimba En Ciudad Bolivar",
+        "fecha": "20 de Septiembre - 5:00 pm",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "El Thrash Metal Se Toma El Teatro El Ensueno",
+        "fecha": "20 de Septiembre - 6:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
         "tipo": "Multidisciplinar",
         "nombre": "La Gran Familia Con Cocoloco Y La Gata Cirko",
         "fecha": "20 de Septiembre - 8:00 pm",
         "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "Idartes Presenta Erase Una Vez Un Pato",
+        "fecha": "21 de Septiembre - 3:00 pm",
+        "ingreso": "Entrada libre"
     },
     {
         "tipo": "Niños y Jóvenes",
@@ -132,10 +102,22 @@
         "ingreso": "Entrada libre"
     },
     {
+        "tipo": "Artes Plásticas y Visuales",
+        "nombre": "Realmix Las Ficciones De La Materia",
+        "fecha": "25 de Septiembre al 10 de Noviembre",
+        "ingreso": "Entrada libre"
+    },
+    {
         "tipo": "Música",
         "nombre": "Elkin Robinson Y Guis Guis Bou Bess Inauguran El Festival Africa En Bogota",
         "fecha": "25 de Septiembre - 7:00 pm",
         "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Multidisciplinar",
+        "nombre": "Las Hermanas Peligro De Chile Llegan Suba Con El Programa Culturas En",
+        "fecha": "26 de Septiembre - 5:00 pm",
+        "ingreso": "Entrada libre"
     },
     {
         "tipo": "Música",
@@ -162,15 +144,39 @@
         "ingreso": "Entrada con costo"
     },
     {
+        "tipo": "Música",
+        "nombre": "Cierre Del Festival Africa En Bogota En La Media Torta",
+        "fecha": "27 de Septiembre - 1:00 pm",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Musica Llanera Con Oscar Rondon Y Seleccion Criolla",
+        "fecha": "27 de Septiembre - 5:00 pm",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Multidisciplinar",
+        "nombre": "52 Hz Realidad Aumentada En El Domo En Los 15 Anos De La Quinta",
+        "fecha": "27 de Septiembre - 7:30 pm",
+        "ingreso": "Entrada libre"
+    },
+    {
         "tipo": "Artes Plásticas y Visuales",
         "nombre": "Encuentro De Palabra Arquitectura Emocional Cobijos Y Moradas 0",
         "fecha": "28 de Septiembre - 2:00 pm",
         "ingreso": "Entrada libre"
     },
     {
-        "tipo": "Multidisciplinar",
-        "nombre": "Las Hermanas Peligro De Chile Llegan Suba Con El Programa Culturas En",
-        "fecha": "29 de Septiembre - 5:00 pm",
+        "tipo": "Niños y Jóvenes",
+        "nombre": "Gori Gori La Historia De Un Nino Su Abuelo Y Un Viaje Fantastico",
+        "fecha": "28 de Septiembre - 3:00 pm",
+        "ingreso": "Entrada libre"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Gaitan Al Aire Vol 49 Llega Con Tony Allen Meets La Boa",
+        "fecha": "1 de Octubre - 3:00 pm",
         "ingreso": "Entrada libre"
     },
     {
@@ -180,9 +186,33 @@
         "ingreso": "Entrada con costo"
     },
     {
+        "tipo": "Artes Plásticas y Visuales",
+        "nombre": "Iv Salon De Artistas Arte La Ky",
+        "fecha": "2 de Octubre al 17 de Noviembre",
+        "ingreso": "Entrada libre"
+    },
+    {
         "tipo": "Teatro",
         "nombre": "La Quinta Del Lobo Presenta Hybris",
         "fecha": "3 de Octubre - 8:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Maria Cristina Plata Llega Con Su Casi Te Creo Tour",
+        "fecha": "4 de Octubre - 8:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Jeff Mills El Mago De Detroit Llega Al Planetario De Bogota",
+        "fecha": "11 de Octubre - 8:00 pm",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "La Compania Lucida Hecha Mano Presenta Buri En El Teatro Jorge Eliecer Gaitan",
+        "fecha": "13 de Octubre - 3:00 pm",
         "ingreso": "Entrada con costo"
     },
     {
