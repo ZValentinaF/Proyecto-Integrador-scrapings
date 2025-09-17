@@ -1,63 +1,68 @@
 import requests
 from bs4 import BeautifulSoup
+import re
 import json
 
-base_url = "https://www.teatropablotobon.com/programacion"
-headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                  "AppleWebKit/537.36 (KHTML, like Gecko) "
-                  "Chrome/120.0.0.0 Safari/537.36"
-}
+def scrape_eventos():
+    url = "https://teatropablotobon.com/eventos/"
+    resp = requests.get(url, timeout=15)
+    resp.encoding = "utf-8"
+    soup = BeautifulSoup(resp.text, "html.parser")
 
-eventos = []
-start = 0
-max_pages = 10
-page_count = 0
+    eventos_data = []
+    titulos = soup.find_all("h2")
 
-while page_count < max_pages:
-    url = f"{base_url}?start={start}" if start > 0 else base_url
-    response = requests.get(url, headers=headers, timeout=15)
-    response.encoding = "utf-8"
-    soup = BeautifulSoup(response.text, "html.parser")
+    for t in titulos:
+        nombre = t.get_text(strip=True)
+        if not nombre or "pasados" in nombre.lower():
+            continue
 
-    contenedores = soup.select("div.event-description")
+        # === CHIPS: tipo e ingreso por separado ===
+        tipo, ingreso = "N/A", "N/A"
+        chips_block = t.find_previous("div", class_="chips")
+        if chips_block:
+            # Buscar tipo
+            tipo_chip = chips_block.find(
+                "div",
+                class_=re.compile(r"chips__chip.*(musica|teatro|danza|comedia|otros)", re.IGNORECASE)
+            )
+            if tipo_chip:
+                tipo = tipo_chip.get_text(strip=True)
 
-    if not contenedores:
-        break
+            # Buscar ingreso
+            ingreso_chip = chips_block.find("div", class_=re.compile(r"chips__chip.*entrada", re.IGNORECASE))
+            if ingreso_chip:
+                ingreso = ingreso_chip.get_text(strip=True)
 
-    for cont in contenedores:
-        tipo_elem = cont.select_one("h3")
-        tipo = tipo_elem.get_text(strip=True) if tipo_elem else "N/A"
+        # === FECHA ===
+        fecha = "N/A"
+        fecha_block = t.find_next("div")
+        if fecha_block:
+            fecha_tags = fecha_block.find_all("p", class_="mb-0")
+            fecha_text = " ".join([f.get_text(strip=True) for f in fecha_tags]) if fecha_tags else ""
+            fecha_match = re.search(r"(\d{1,2}\s+de\s+\w+)", fecha_text, re.IGNORECASE)
+            if fecha_match:
+                fecha = fecha_match.group(1)
 
-        nombre_elem = cont.select_one("a")
-        if nombre_elem:
-            nombre = nombre_elem.get_text(strip=True)
-            if not nombre:
-                href = nombre_elem.get("href", "")
-                if href:
-                    slug = href.strip("/").split("/")[-1]
-                    nombre = slug.replace("-", " ").title()
-        else:
-            nombre = "N/A"
-
-        mes = cont.select_one(".month")
-        dia = cont.select_one(".day")
-        fecha = f"{dia.get_text(strip=True)} {mes.get_text(strip=True)}" if mes and dia else "N/A"
-
-        ingreso_elem = cont.find_previous("span", class_="price")
-        ingreso = ingreso_elem.get_text(strip=True) if ingreso_elem else "N/A"
-
-        eventos.append({
+        eventos_data.append({
             "tipo": tipo,
             "nombre": nombre,
             "fecha": fecha,
             "ingreso": ingreso
         })
 
-    start += 12
-    page_count += 1
+    return eventos_data
 
-with open("scraping_teatropablotobon.json", "w", encoding="utf-8") as f:
-    json.dump(eventos, f, indent=4, ensure_ascii=False)
 
-print(json.dumps(eventos, indent=4, ensure_ascii=False))
+if __name__ == "__main__":
+    eventos = scrape_eventos()
+
+    if not eventos:
+        print("⚠️ No se encontraron eventos.")
+    else:
+        # Guardar en archivo JSON
+        with open("scraping_teatropablotobon.json", "w", encoding="utf-8") as f:
+            json.dump(eventos, f, indent=4, ensure_ascii=False)
+
+        # Mostrar en consola con formato
+        print(json.dumps(eventos, indent=4, ensure_ascii=False))

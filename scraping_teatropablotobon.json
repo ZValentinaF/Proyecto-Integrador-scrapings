@@ -1,1 +1,74 @@
-[]
+[
+    {
+        "tipo": "Otros",
+        "nombre": "Stand up comedy – Somos Neas",
+        "fecha": "20 de septiembre",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Especial de amor – Karaoke",
+        "fecha": "20 de septiembre",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Danza",
+        "nombre": "Clases de baile",
+        "fecha": "21 de septiembre",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "Teatro en familia: El Principito",
+        "fecha": "25 de septiembre",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Danza",
+        "nombre": "Arenas – Ballet Folklórico de Antioquia",
+        "fecha": "26 de septiembre",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Rolling Ruanas – 10 años",
+        "fecha": "27 de septiembre",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "DC Cómics VS Marvel",
+        "fecha": "27 de septiembre",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Danza",
+        "nombre": "Clases de baile",
+        "fecha": "1 de octubre",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Los Mirlos – Cumbia Amazónica",
+        "fecha": "2 de octubre",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "‘Viernes Santo’ de Teatriados",
+        "fecha": "3 de octubre",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Vivxs para cantarlo",
+        "fecha": "4 de octubre",
+        "ingreso": "Entrada con costo"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Reina de Corazones – Festival de Festivales",
+        "fecha": "N/A",
+        "ingreso": "Entrada con costo"
+    }
+]
