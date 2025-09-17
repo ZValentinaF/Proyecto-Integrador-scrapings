@@ -16,7 +16,7 @@ FUENTES = {
         "tabla": "idartes_eventos"
     },
     "pablobon": {
-        "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/main/scraping_teatropablotobon.json",
+        "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/refs/heads/main/scraping_teatropablotobon.json",
         "tabla": "teatropablobon_eventos"   
     },
     "plaza": {
