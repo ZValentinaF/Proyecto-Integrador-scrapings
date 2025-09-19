@@ -2,229 +2,297 @@
     {
         "tipo": "Artes Plásticas y Visuales",
         "nombre": "Bordar La Palabra",
-        "fecha": "26 de Agosto al 7 de Octubre",
-        "ingreso": "Inscripción previa"
+        "fecha_inicio": "26 De Agosto",
+        "fecha_fin": "7 De Octubre",
+        "hora": null,
+        "ingreso": "INSCRIPCION"
     },
     {
         "tipo": "Literatura",
         "nombre": "Ciclo De Lecturas Para Acompanar El Duelo",
-        "fecha": "17 de Septiembre al 6 de Noviembre",
-        "ingreso": "Entrada libre"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "Lucas Hill Presenta Su Nuevo Album El Sol Sale Tambien",
-        "fecha": "18 de Septiembre - 8:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "17 De Septiembre",
+        "fecha_fin": "6 De Noviembre",
+        "hora": null,
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Música",
         "nombre": "Dueto De Guitarra Y Violin En El Barrio Los Naranjos En Bosa Con Culturas En",
-        "fecha": "19 de Septiembre - 10:30 am",
-        "ingreso": "Entrada libre"
+        "fecha_inicio": "19 De Septiembre",
+        "fecha_fin": "19 De Septiembre",
+        "hora": "10:30 am",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Música",
         "nombre": "Los Sonidos Del Metal Se Toman Escenarios Moviles En El Caleidoscopio Sonoro",
-        "fecha": "19 de Septiembre - 5:00 pm",
-        "ingreso": "Entrada libre"
+        "fecha_inicio": "19 De Septiembre",
+        "fecha_fin": "19 De Septiembre",
+        "hora": "5:00 pm",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Música",
         "nombre": "Aldo Zolev La Vida Hecha Musica",
-        "fecha": "19 de Septiembre - 7:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "19 De Septiembre",
+        "fecha_fin": "19 De Septiembre",
+        "hora": "7:00 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Música",
         "nombre": "Nicoyembe Y Su Banda Pre Festival Africa En Bogota En El Ensueno",
-        "fecha": "19 de Septiembre - 7:30 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "19 De Septiembre",
+        "fecha_fin": "19 De Septiembre",
+        "hora": "7:30 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Literatura",
-        "nombre": "Festival Lectura Bajo Los Arboles 0",
-        "fecha": "20 de Septiembre - 10:00 am",
-        "ingreso": "Entrada libre"
+        "nombre": "Festival Lectura Bajo Los Arboles",
+        "fecha_inicio": "20 De Septiembre",
+        "fecha_fin": "20 De Septiembre",
+        "hora": "10:00 am",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Artes Plásticas y Visuales",
-        "nombre": "Bienal Internacional De Arte Y Ciudad Bog25",
-        "fecha": "20 de Septiembre al 9 de Noviembre",
-        "ingreso": "Entrada libre"
+        "nombre": "Bienal Internacional De Arte Y Ciudad Bog",
+        "fecha_inicio": "20 De Septiembre",
+        "fecha_fin": "9 De Noviembre",
+        "hora": null,
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Música",
         "nombre": "El Tortazo Blues Regresa La Media Torta",
-        "fecha": "20 de Septiembre - 1:00 pm",
-        "ingreso": "Entrada libre"
+        "fecha_inicio": "20 De Septiembre",
+        "fecha_fin": "20 De Septiembre",
+        "hora": "1:00 pm",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Niños y Jóvenes",
         "nombre": "Ila La Nina Tejedora Un Musical Para Grandes Y Ninos",
-        "fecha": "20 de Septiembre - 3:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "20 De Septiembre",
+        "fecha_fin": "20 De Septiembre",
+        "hora": "3:00 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Música",
         "nombre": "Raices Tumaquenas Musica De Marimba En Ciudad Bolivar",
-        "fecha": "20 de Septiembre - 5:00 pm",
-        "ingreso": "Entrada libre"
+        "fecha_inicio": "20 De Septiembre",
+        "fecha_fin": "20 De Septiembre",
+        "hora": "5:00 pm",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Música",
         "nombre": "El Thrash Metal Se Toma El Teatro El Ensueno",
-        "fecha": "20 de Septiembre - 6:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "20 De Septiembre",
+        "fecha_fin": "20 De Septiembre",
+        "hora": "6:00 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Multidisciplinar",
         "nombre": "La Gran Familia Con Cocoloco Y La Gata Cirko",
-        "fecha": "20 de Septiembre - 8:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "20 De Septiembre",
+        "fecha_fin": "20 De Septiembre",
+        "hora": "8:00 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Teatro",
         "nombre": "Idartes Presenta Erase Una Vez Un Pato",
-        "fecha": "21 de Septiembre - 3:00 pm",
-        "ingreso": "Entrada libre"
+        "fecha_inicio": "21 De Septiembre",
+        "fecha_fin": "21 De Septiembre",
+        "hora": "3:00 pm",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Niños y Jóvenes",
         "nombre": "Al Teatro El Parque Llega La Obra Al Otro Lado",
-        "fecha": "21 de Septiembre - 3:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "21 De Septiembre",
+        "fecha_fin": "21 De Septiembre",
+        "hora": "3:00 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Música",
         "nombre": "Dueto De Trombon Y Piano",
-        "fecha": "23 de Septiembre - 5:00 pm",
-        "ingreso": "Entrada libre"
+        "fecha_inicio": "23 De Septiembre",
+        "fecha_fin": "23 De Septiembre",
+        "hora": "5:00 pm",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Artes Plásticas y Visuales",
         "nombre": "Realmix Las Ficciones De La Materia",
-        "fecha": "25 de Septiembre al 10 de Noviembre",
-        "ingreso": "Entrada libre"
+        "fecha_inicio": "25 De Septiembre",
+        "fecha_fin": "10 De Noviembre",
+        "hora": null,
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Música",
         "nombre": "Elkin Robinson Y Guis Guis Bou Bess Inauguran El Festival Africa En Bogota",
-        "fecha": "25 de Septiembre - 7:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "25 De Septiembre",
+        "fecha_fin": "25 De Septiembre",
+        "hora": "7:00 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Multidisciplinar",
         "nombre": "Las Hermanas Peligro De Chile Llegan Suba Con El Programa Culturas En",
-        "fecha": "26 de Septiembre - 5:00 pm",
-        "ingreso": "Entrada libre"
+        "fecha_inicio": "26 De Septiembre",
+        "fecha_fin": "26 De Septiembre",
+        "hora": "5:00 pm",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Música",
         "nombre": "Disfrute Del Festival Africa En Bogota En Escenarios Moviles De Idartes",
-        "fecha": "26 de Septiembre - 5:00 pm",
-        "ingreso": "Entrada libre"
+        "fecha_inicio": "26 De Septiembre",
+        "fecha_fin": "26 De Septiembre",
+        "hora": "5:00 pm",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Música",
         "nombre": "Gabriela Ponce Llega La Sala Gaitan",
-        "fecha": "26 de Septiembre - 7:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "26 De Septiembre",
+        "fecha_fin": "26 De Septiembre",
+        "hora": "7:00 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Música",
         "nombre": "La Muchacha Y Guache Presentan Sea Maiz",
-        "fecha": "26 de Septiembre - 7:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "26 De Septiembre",
+        "fecha_fin": "26 De Septiembre",
+        "hora": "7:00 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Música",
         "nombre": "Noche De Gala Festival Africa En Bogota",
-        "fecha": "26 de Septiembre - 8:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "26 De Septiembre",
+        "fecha_fin": "26 De Septiembre",
+        "hora": "8:00 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Música",
         "nombre": "Cierre Del Festival Africa En Bogota En La Media Torta",
-        "fecha": "27 de Septiembre - 1:00 pm",
-        "ingreso": "Entrada libre"
+        "fecha_inicio": "27 De Septiembre",
+        "fecha_fin": "27 De Septiembre",
+        "hora": "1:00 pm",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Música",
         "nombre": "Musica Llanera Con Oscar Rondon Y Seleccion Criolla",
-        "fecha": "27 de Septiembre - 5:00 pm",
-        "ingreso": "Entrada libre"
+        "fecha_inicio": "27 De Septiembre",
+        "fecha_fin": "27 De Septiembre",
+        "hora": "5:00 pm",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Multidisciplinar",
-        "nombre": "52 Hz Realidad Aumentada En El Domo En Los 15 Anos De La Quinta",
-        "fecha": "27 de Septiembre - 7:30 pm",
-        "ingreso": "Entrada libre"
+        "nombre": "Hz Realidad Aumentada En El Domo En Los  Anos De La Quinta",
+        "fecha_inicio": "27 De Septiembre",
+        "fecha_fin": "27 De Septiembre",
+        "hora": "7:30 pm",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Artes Plásticas y Visuales",
-        "nombre": "Encuentro De Palabra Arquitectura Emocional Cobijos Y Moradas 0",
-        "fecha": "28 de Septiembre - 2:00 pm",
-        "ingreso": "Entrada libre"
+        "nombre": "Encuentro De Palabra Arquitectura Emocional Cobijos Y Moradas",
+        "fecha_inicio": "28 De Septiembre",
+        "fecha_fin": "28 De Septiembre",
+        "hora": "2:00 pm",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Niños y Jóvenes",
         "nombre": "Gori Gori La Historia De Un Nino Su Abuelo Y Un Viaje Fantastico",
-        "fecha": "28 de Septiembre - 3:00 pm",
-        "ingreso": "Entrada libre"
+        "fecha_inicio": "28 De Septiembre",
+        "fecha_fin": "28 De Septiembre",
+        "hora": "3:00 pm",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Música",
-        "nombre": "Gaitan Al Aire Vol 49 Llega Con Tony Allen Meets La Boa",
-        "fecha": "1 de Octubre - 3:00 pm",
-        "ingreso": "Entrada libre"
+        "nombre": "Gaitan Al Aire Vol  Llega Con Tony Allen Meets La Boa",
+        "fecha_inicio": "1 De Octubre",
+        "fecha_fin": "1 De Octubre",
+        "hora": "3:00 pm",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Teatro",
         "nombre": "El Colegio Del Cuerpo Presenta Suite Akhunov",
-        "fecha": "1 de Octubre - 8:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "1 De Octubre",
+        "fecha_fin": "1 De Octubre",
+        "hora": "8:00 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Artes Plásticas y Visuales",
         "nombre": "Iv Salon De Artistas Arte La Ky",
-        "fecha": "2 de Octubre al 17 de Noviembre",
-        "ingreso": "Entrada libre"
+        "fecha_inicio": "2 De Octubre",
+        "fecha_fin": "17 De Noviembre",
+        "hora": null,
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Teatro",
         "nombre": "La Quinta Del Lobo Presenta Hybris",
-        "fecha": "3 de Octubre - 8:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "3 De Octubre",
+        "fecha_fin": "3 De Octubre",
+        "hora": "8:00 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Música",
         "nombre": "Maria Cristina Plata Llega Con Su Casi Te Creo Tour",
-        "fecha": "4 de Octubre - 8:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "4 De Octubre",
+        "fecha_fin": "4 De Octubre",
+        "hora": "8:00 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Música",
         "nombre": "Jeff Mills El Mago De Detroit Llega Al Planetario De Bogota",
-        "fecha": "11 de Octubre - 8:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "11 De Octubre",
+        "fecha_fin": "11 De Octubre",
+        "hora": "8:00 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Teatro",
         "nombre": "La Compania Lucida Hecha Mano Presenta Buri En El Teatro Jorge Eliecer Gaitan",
-        "fecha": "13 de Octubre - 3:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "13 De Octubre",
+        "fecha_fin": "13 De Octubre",
+        "hora": "3:00 pm",
+        "ingreso": "COSTO"
     },
     {
         "tipo": "Artes Plásticas y Visuales",
-        "nombre": "Encuentro De Palabra Arquitectura Emocional Cobijos Y Moradas 1",
-        "fecha": "19 de Octubre - 2:00 pm",
-        "ingreso": "Entrada libre"
+        "nombre": "Encuentro De Palabra Arquitectura Emocional Cobijos Y Moradas",
+        "fecha_inicio": "19 De Octubre",
+        "fecha_fin": "19 De Octubre",
+        "hora": "2:00 pm",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Música",
         "nombre": "Zeta Bosio El Bajista Original De Soda Stereo Hara Temblar Bogota",
-        "fecha": "24 de Octubre - 8:00 pm",
-        "ingreso": "Entrada con costo"
+        "fecha_inicio": "24 De Octubre",
+        "fecha_fin": "24 De Octubre",
+        "hora": "8:00 pm",
+        "ingreso": "COSTO"
     }
 ]

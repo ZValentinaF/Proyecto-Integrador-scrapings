@@ -3,6 +3,57 @@ from bs4 import BeautifulSoup
 import re
 import json
 
+# ----------------------------
+# Funciones de normalización
+# ----------------------------
+def normalizar_fecha(fecha_raw: str):
+    """
+    Convierte fechas al formato estándar.
+    Si hay día y mes -> devuelve en Title Case.
+    """
+    if not fecha_raw or fecha_raw == "N/A":
+        return None
+    return fecha_raw.title().strip()
+
+def normalizar_ingreso(ingreso_raw: str):
+    """
+    Estandariza el ingreso en categorías fijas.
+    """
+    ingreso_raw = ingreso_raw.lower()
+    if "libre" in ingreso_raw:
+        return "LIBRE"
+    elif "costo" in ingreso_raw or "$" in ingreso_raw:
+        return "COSTO"
+    elif "inscripción" in ingreso_raw:
+        return "INSCRIPCION"
+    else:
+        return "OTRO"
+
+def limpiar_nombre(nombre_raw: str):
+    """
+    Limpia nombres eliminando números o basura extra.
+    """
+    return re.sub(r"\d+", "", nombre_raw).strip()
+
+def normalizar_tipo(tipo_raw: str):
+    """
+    Establece tipos de evento normalizados.
+    """
+    tipo_raw = tipo_raw.lower()
+    if "musica" in tipo_raw or "música" in tipo_raw:
+        return "MÚSICA"
+    elif "teatro" in tipo_raw:
+        return "TEATRO"
+    elif "danza" in tipo_raw:
+        return "DANZA"
+    elif "comedia" in tipo_raw:
+        return "COMEDIA"
+    else:
+        return "OTROS"
+
+# ----------------------------
+# Scraping
+# ----------------------------
 def scrape_eventos():
     url = "https://teatropablotobon.com/eventos/"
     resp = requests.get(url, timeout=15)
@@ -17,11 +68,10 @@ def scrape_eventos():
         if not nombre or "pasados" in nombre.lower():
             continue
 
-        # === CHIPS: tipo e ingreso por separado ===
+        # === CHIPS: tipo e ingreso ===
         tipo, ingreso = "N/A", "N/A"
         chips_block = t.find_previous("div", class_="chips")
         if chips_block:
-            # Buscar tipo
             tipo_chip = chips_block.find(
                 "div",
                 class_=re.compile(r"chips__chip.*(musica|teatro|danza|comedia|otros)", re.IGNORECASE)
@@ -29,7 +79,6 @@ def scrape_eventos():
             if tipo_chip:
                 tipo = tipo_chip.get_text(strip=True)
 
-            # Buscar ingreso
             ingreso_chip = chips_block.find("div", class_=re.compile(r"chips__chip.*entrada", re.IGNORECASE))
             if ingreso_chip:
                 ingreso = ingreso_chip.get_text(strip=True)
@@ -44,16 +93,23 @@ def scrape_eventos():
             if fecha_match:
                 fecha = fecha_match.group(1)
 
-        eventos_data.append({
-            "tipo": tipo,
-            "nombre": nombre,
-            "fecha": fecha,
-            "ingreso": ingreso
-        })
+        # ----------------------------
+        # Aplicar normalización
+        # ----------------------------
+        evento = {
+            "tipo": normalizar_tipo(tipo),
+            "nombre": limpiar_nombre(nombre),
+            "fecha": normalizar_fecha(fecha),
+            "ingreso": normalizar_ingreso(ingreso)
+        }
+
+        eventos_data.append(evento)
 
     return eventos_data
 
-
+# ----------------------------
+# Ejecución
+# ----------------------------
 if __name__ == "__main__":
     eventos = scrape_eventos()
 
