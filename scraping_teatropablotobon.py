@@ -2,23 +2,51 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import json
+import unicodedata
+from datetime import date
 
 # ----------------------------
 # Funciones de normalización
 # ----------------------------
-def normalizar_fecha(fecha_raw: str):
+def _sin_acentos(s: str) -> str:
+    return ''.join(c for c in unicodedata.normalize('NFD', s)
+                   if unicodedata.category(c) != 'Mn')
+
+MESES = {
+    "enero":"01","febrero":"02","marzo":"03","abril":"04","mayo":"05","junio":"06",
+    "julio":"07","agosto":"08","septiembre":"09","setiembre":"09","octubre":"10",
+    "noviembre":"11","diciembre":"12"
+}
+
+def _infer_year(mes: int, dia: int, hoy: date | None = None) -> int:
+    hoy = hoy or date.today()
+    y = hoy.year
+    try:
+        d = date(y, mes, dia)
+        return y if d >= hoy else y + 1
+    except ValueError:
+        return y
+
+def normalizar_fecha(fecha_raw: str, hoy: date | None = None) -> str | None:
     """
-    Convierte fechas al formato estándar.
-    Si hay día y mes -> devuelve en Title Case.
+    Convierte '26 De Septiembre' o '1 Octubre' a 'YYYY-MM-DD'.
+    Si no puede interpretar, devuelve None.
     """
     if not fecha_raw or fecha_raw == "N/A":
         return None
-    return fecha_raw.title().strip()
+    s = _sin_acentos(fecha_raw.strip().lower())
+    m = re.match(r'^(\d{1,2})\s+de\s+([a-z]+)(?:\s+de\s+(\d{4}))?$', s) or \
+        re.match(r'^(\d{1,2})\s+([a-z]+)(?:\s+(\d{4}))?$', s)
+    if not m:
+        return None
+    dia = int(m.group(1)); mes_txt = m.group(2); anio = m.group(3)
+    mes = MESES.get(mes_txt)
+    if not mes:
+        return None
+    y = int(anio) if anio else _infer_year(int(mes), dia, hoy=hoy)
+    return f"{y}-{mes}-{dia:02d}"
 
 def normalizar_ingreso(ingreso_raw: str):
-    """
-    Estandariza el ingreso en categorías fijas.
-    """
     ingreso_raw = ingreso_raw.lower()
     if "libre" in ingreso_raw:
         return "LIBRE"
@@ -30,15 +58,9 @@ def normalizar_ingreso(ingreso_raw: str):
         return "OTRO"
 
 def limpiar_nombre(nombre_raw: str):
-    """
-    Limpia nombres eliminando números o basura extra.
-    """
     return re.sub(r"\d+", "", nombre_raw).strip()
 
 def normalizar_tipo(tipo_raw: str):
-    """
-    Establece tipos de evento normalizados.
-    """
     tipo_raw = tipo_raw.lower()
     if "musica" in tipo_raw or "música" in tipo_raw:
         return "MÚSICA"
@@ -116,9 +138,25 @@ if __name__ == "__main__":
     if not eventos:
         print("⚠️ No se encontraron eventos.")
     else:
+        # Resumen en consola
+        total = len(eventos)
+        validos = sum(1 for ev in eventos if ev.get("fecha"))
+        invalidos = total - validos
+
+        print("📊 Resumen de scraping Teatro Pablo Tobón")
+        print(f"   Total eventos encontrados: {total}")
+        print(f"   Con fecha válida: {validos}")
+        print(f"   Sin fecha válida: {invalidos}")
+
+        if eventos:
+            print("\n🔎 Ejemplo de evento normalizado:")
+            print(eventos[0])
+
         # Guardar en archivo JSON
         with open("scraping_teatropablotobon.json", "w", encoding="utf-8") as f:
             json.dump(eventos, f, indent=4, ensure_ascii=False)
 
-        # Mostrar en consola con formato
+        # Mostrar JSON completo
+        print("\n📥 JSON completo:")
         print(json.dumps(eventos, indent=4, ensure_ascii=False))
+        print("✅ Archivo JSON normalizado creado correctamente")
