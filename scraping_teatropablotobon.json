@@ -1,29 +1,5 @@
 [
     {
-        "tipo": "OTROS",
-        "nombre": "Stand up comedy – Somos Neas",
-        "fecha": "20 De Septiembre",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "MÚSICA",
-        "nombre": "Especial de amor – Karaoke",
-        "fecha": "20 De Septiembre",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "DANZA",
-        "nombre": "Clases de baile",
-        "fecha": "21 De Septiembre",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "TEATRO",
-        "nombre": "Teatro en familia: El Principito",
-        "fecha": "25 De Septiembre",
-        "ingreso": "COSTO"
-    },
-    {
         "tipo": "DANZA",
         "nombre": "Arenas – Ballet Folklórico de Antioquia",
         "fecha": "26 De Septiembre",
@@ -68,6 +44,30 @@
     {
         "tipo": "MÚSICA",
         "nombre": "Reina de Corazones – Festival de Festivales",
+        "fecha": "5 De Octubre",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "MÚSICA",
+        "nombre": "Canticuentos: La aventura pirata",
+        "fecha": "9 De Octubre",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "MÚSICA",
+        "nombre": "Los de Adentro en Medellín",
+        "fecha": "16 De Octubre",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "MÚSICA",
+        "nombre": "Bandalos Chinos – Vándalos",
+        "fecha": "17 De Octubre",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "MÚSICA",
+        "nombre": "Vuelvo a vivir, vuelvo a cantar",
         "fecha": null,
         "ingreso": "COSTO"
     }
