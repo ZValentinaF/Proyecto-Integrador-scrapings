@@ -45,6 +45,22 @@ def limpiar_json(texto: str):
     return texto
 
 
+# ----------------------------
+# Nueva función de validación
+# ----------------------------
+def es_evento_valido(evento: dict, tabla: str) -> bool:
+    """
+    Aplica reglas simples de validación antes de insertar en DB.
+    """
+    if tabla == "idartes_eventos":
+        return bool(evento.get("nombre")) and bool(evento.get("fecha_inicio"))
+    elif tabla == "teatropablobon_eventos":
+        return bool(evento.get("nombre")) and bool(evento.get("fecha"))
+    elif tabla == "teatroplaza_eventos":
+        return bool(evento.get("nombre")) and bool(evento.get("fecha"))
+    return True
+
+
 def cargar_datos():
     try:
         conn = psycopg2.connect(**DB_CONFIG)
@@ -75,6 +91,10 @@ def cargar_datos():
             print(f"   → {len(eventos)} eventos encontrados")
 
             for ev in eventos:
+                if not es_evento_valido(ev, tabla):
+                    print(f"   ⚠️ Evento inválido descartado: {ev}")
+                    continue
+
                 if tabla == "idartes_eventos":
                     cur.execute(f"""
                         INSERT INTO {tabla} (tipo, nombre, fecha_inicio, fecha_fin, hora, ingreso, raw)
@@ -91,7 +111,7 @@ def cargar_datos():
                     ))
 
                 elif tabla == "teatropablobon_eventos":
-                    fecha = ev.get("fecha", "N/A") or "N/A"  # ⚡ fix para null
+                    fecha = ev.get("fecha", "N/A") or "N/A"
                     cur.execute(f"""
                         INSERT INTO {tabla} (tipo, nombre, fecha, ingreso, raw)
                         VALUES (%s, %s, %s, %s, %s)
@@ -105,7 +125,7 @@ def cargar_datos():
                     ))
 
                 elif tabla == "teatroplaza_eventos":
-                    fecha = ev.get("fecha", "N/A") or "N/A"  # ⚡ fix por consistencia
+                    fecha = ev.get("fecha", "N/A") or "N/A"
                     cur.execute(f"""
                         INSERT INTO {tabla} (nombre, fecha, raw)
                         VALUES (%s, %s, %s)
