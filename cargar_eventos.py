@@ -1,9 +1,13 @@
 import psycopg2
-import requests
 import json
-import ast
 import re
+import os
 from datetime import datetime
+
+# ----------------------------
+# Configuración de rutas
+# ----------------------------
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 DB_CONFIG = {
     "host": "awsaurorapg17-instance-1.cav2004g2f8p.us-east-1.rds.amazonaws.com",
@@ -15,61 +19,43 @@ DB_CONFIG = {
 
 FUENTES = {
     "idartes": {
-        "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/main/scraping_idartes.json",
+        "archivo": os.path.join(BASE_DIR, "scraping_idartes.json"),
         "tabla": "idartes_eventos"
     },
     "pablobon": {
-        "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/refs/heads/main/scraping_teatropablotobon.json",
+        "archivo": os.path.join(BASE_DIR, "scraping_teatropablotobon.json"),
         "tabla": "teatropablobon_eventos"   
     },
     "plaza": {
-        "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/main/scraping_teatroplasa.json",
+        "archivo": os.path.join(BASE_DIR, "scraping_teatroplasa.json"),
         "tabla": "teatroplaza_eventos"
     }
 }
 
-
 def limpiar_json(texto: str):
     """Intenta limpiar texto para que sea JSON válido."""
     if texto.startswith("\ufeff"):
-        texto = texto.lstrip("\ufeff")  # quitar BOM
+        texto = texto.lstrip("\ufeff")
     texto = texto.strip()
 
-    if "][" in texto:  # caso típico de listas pegadas
+    if "][" in texto:
         texto = texto.replace("][", ",")
 
-    if not texto.startswith("["):  # buscar primer bloque de lista si hay basura
+    if not texto.startswith("["):
         match = re.search(r"\[.*\]", texto, re.DOTALL)
         if match:
             texto = match.group(0)
 
     return texto
 
-
-def es_evento_valido(evento: dict, tabla: str) -> bool:
-    """Reglas simples de validación antes de insertar en DB."""
+def es_valido(ev, tabla):
+    """HU-07: reglas de validación de eventos"""
+    if not ev.get("nombre") or ev.get("nombre") in ("N/A", "", None):
+        return False
     if tabla == "idartes_eventos":
-        return bool(evento.get("nombre")) and bool(evento.get("fecha_inicio"))
-    elif tabla == "teatropablobon_eventos":
-        return bool(evento.get("nombre")) and bool(evento.get("fecha"))
-    elif tabla == "teatroplaza_eventos":
-        return bool(evento.get("nombre")) and bool(evento.get("fecha"))
-    return True
-
-
-# ----------------------------
-# Nueva función: Resumen de datos
-# ----------------------------
-def generar_resumen(fuente, tabla, eventos, validos, invalidos):
-    resumen = []
-    resumen.append(f"📊 Resumen {fuente} → {tabla}")
-    resumen.append(f"   Total eventos: {len(eventos)}")
-    resumen.append(f"   Válidos: {validos}")
-    resumen.append(f"   Inválidos: {invalidos}")
-    if eventos:
-        resumen.append(f"   Ejemplo: {json.dumps(eventos[0], ensure_ascii=False)}")
-    return "\n".join(resumen)
-
+        return bool(ev.get("fecha_inicio") and ev.get("fecha_inicio") != "N/A")
+    else:
+        return bool(ev.get("fecha") and ev.get("fecha") != "N/A")
 
 def cargar_datos():
     try:
@@ -77,40 +63,49 @@ def cargar_datos():
         cur = conn.cursor()
         print("✅ Conexión establecida")
 
-        log_lines = []
-        log_lines.append(f"\n=== EJECUCIÓN {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ===")
+        resumen_log = []
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         for fuente, config in FUENTES.items():
-            url = config["url"]
+            archivo = config["archivo"]
             tabla = config["tabla"]
 
             print(f"\n📥 Cargando {fuente} → {tabla}")
-            r = requests.get(url, timeout=15)
-
-            texto = limpiar_json(r.text)
 
             try:
+                with open(archivo, "r", encoding="utf-8") as f:
+                    texto = limpiar_json(f.read())
                 eventos = json.loads(texto)
-            except Exception:
-                try:
-                    eventos = ast.literal_eval(texto)
-                except Exception as e:
-                    print(f"❌ Error leyendo JSON de {fuente}: {e}")
-                    continue
+            except Exception as e:
+                print(f"❌ Error leyendo archivo {archivo}: {e}")
+                continue
 
             if not isinstance(eventos, list):
                 eventos = [eventos]
 
-            print(f"   → {len(eventos)} eventos encontrados")
-
-            validos, invalidos = 0, 0
-
+            validos, invalidos = [], []
             for ev in eventos:
-                if not es_evento_valido(ev, tabla):
-                    invalidos += 1
-                    continue
+                if es_valido(ev, tabla):
+                    validos.append(ev)
+                else:
+                    invalidos.append(ev)
 
-                validos += 1
+            print(f"   → {len(eventos)} eventos encontrados")
+            print(f"   ✅ Válidos: {len(validos)}")
+            print(f"   ❌ Inválidos: {len(invalidos)}")
+
+            if invalidos:
+                print("   Ejemplos de inválidos:")
+                for ejemplo in invalidos[:3]:
+                    print(f"   - {ejemplo}")
+
+            # Guardar en log
+            resumen_log.append(
+                f"[{timestamp}] {fuente}: {len(validos)} válidos / {len(invalidos)} inválidos"
+            )
+
+            # Insertar solo válidos
+            for ev in validos:
                 if tabla == "idartes_eventos":
                     cur.execute(f"""
                         INSERT INTO {tabla} (tipo, nombre, fecha_inicio, fecha_fin, hora, ingreso, raw)
@@ -152,24 +147,19 @@ def cargar_datos():
                         json.dumps(ev, ensure_ascii=False)
                     ))
 
-            # Generar resumen y agregarlo al log
-            resumen_fuente = generar_resumen(fuente, tabla, eventos, validos, invalidos)
-            print(resumen_fuente)
-            log_lines.append(resumen_fuente)
-
         conn.commit()
         print("\n🎉 Datos cargados correctamente.")
+
+        # HU-10: escribir resumen en log
+        log_path = os.path.join(BASE_DIR, "resumen_extracciones.log")
+        with open(log_path, "a", encoding="utf-8") as logf:
+            logf.write("\n".join(resumen_log) + "\n")
 
         cur.close()
         conn.close()
 
-        # Guardar resumen en archivo log
-        with open("resumen_extracciones.log", "a", encoding="utf-8") as f:
-            f.write("\n".join(log_lines) + "\n")
-
     except Exception as e:
         print("❌ Error general:", e)
-
 
 if __name__ == "__main__":
     cargar_datos()
