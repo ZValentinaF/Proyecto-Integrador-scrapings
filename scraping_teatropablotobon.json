@@ -1,73 +1,73 @@
 [
     {
-        "tipo": "DANZA",
-        "nombre": "Arenas – Ballet Folklórico de Antioquia",
-        "fecha": "2025-09-26",
-        "ingreso": "COSTO"
-    },
-    {
         "tipo": "MÚSICA",
         "nombre": "Rolling Ruanas –  años",
-        "fecha": "2025-09-27",
+        "fecha": "27 De Septiembre",
         "ingreso": "COSTO"
     },
     {
         "tipo": "MÚSICA",
         "nombre": "DC Cómics VS Marvel",
-        "fecha": "2025-09-27",
+        "fecha": "27 De Septiembre",
         "ingreso": "COSTO"
     },
     {
         "tipo": "DANZA",
         "nombre": "Clases de baile",
-        "fecha": "2025-10-01",
+        "fecha": "1 De Octubre",
         "ingreso": "COSTO"
     },
     {
         "tipo": "MÚSICA",
         "nombre": "Los Mirlos – Cumbia Amazónica",
-        "fecha": "2025-10-02",
+        "fecha": "2 De Octubre",
         "ingreso": "COSTO"
     },
     {
         "tipo": "TEATRO",
         "nombre": "‘Viernes Santo’ de Teatriados",
-        "fecha": "2025-10-03",
+        "fecha": "3 De Octubre",
         "ingreso": "COSTO"
     },
     {
         "tipo": "MÚSICA",
         "nombre": "Vivxs para cantarlo",
-        "fecha": "2025-10-04",
+        "fecha": "4 De Octubre",
         "ingreso": "COSTO"
     },
     {
         "tipo": "MÚSICA",
         "nombre": "Reina de Corazones – Festival de Festivales",
-        "fecha": "2025-10-05",
+        "fecha": "5 De Octubre",
         "ingreso": "COSTO"
     },
     {
         "tipo": "MÚSICA",
         "nombre": "Canticuentos: La aventura pirata",
-        "fecha": "2025-10-09",
+        "fecha": "9 De Octubre",
         "ingreso": "COSTO"
     },
     {
         "tipo": "MÚSICA",
         "nombre": "Los de Adentro en Medellín",
-        "fecha": "2025-10-16",
+        "fecha": "16 De Octubre",
         "ingreso": "COSTO"
     },
     {
         "tipo": "MÚSICA",
         "nombre": "Bandalos Chinos – Vándalos",
-        "fecha": "2025-10-17",
+        "fecha": "17 De Octubre",
         "ingreso": "COSTO"
     },
     {
         "tipo": "MÚSICA",
         "nombre": "Vuelvo a vivir, vuelvo a cantar",
+        "fecha": "25 De Octubre",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "MÚSICA",
+        "nombre": "ARA MALIKIAN: INTRUSO",
         "fecha": null,
         "ingreso": "COSTO"
     }
