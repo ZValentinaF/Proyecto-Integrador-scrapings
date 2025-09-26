@@ -1,14 +1,14 @@
 import psycopg2
+import requests
 import json
+import ast
 import re
 import os
 from datetime import datetime
 
 # ----------------------------
-# Configuración de rutas
+# Configuración DB y rutas
 # ----------------------------
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
 DB_CONFIG = {
     "host": "awsaurorapg17-instance-1.cav2004g2f8p.us-east-1.rds.amazonaws.com",
     "port": "5432",
@@ -19,19 +19,24 @@ DB_CONFIG = {
 
 FUENTES = {
     "idartes": {
-        "archivo": os.path.join(BASE_DIR, "scraping_idartes.json"),
+        "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/main/scraping_idartes.json",
         "tabla": "idartes_eventos"
     },
     "pablobon": {
-        "archivo": os.path.join(BASE_DIR, "scraping_teatropablotobon.json"),
+        "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/refs/heads/main/scraping_teatropablotobon.json",
         "tabla": "teatropablobon_eventos"   
     },
     "plaza": {
-        "archivo": os.path.join(BASE_DIR, "scraping_teatroplasa.json"),
+        "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/main/scraping_teatroplasa.json",
         "tabla": "teatroplaza_eventos"
     }
 }
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# ----------------------------
+# Funciones de apoyo
+# ----------------------------
 def limpiar_json(texto: str):
     """Intenta limpiar texto para que sea JSON válido."""
     if texto.startswith("\ufeff"):
@@ -49,14 +54,17 @@ def limpiar_json(texto: str):
     return texto
 
 def es_valido(ev, tabla):
-    """HU-07: reglas de validación de eventos"""
+    """HU-07: reglas de validación de eventos (nombre + fecha obligatoria)."""
     if not ev.get("nombre") or ev.get("nombre") in ("N/A", "", None):
         return False
     if tabla == "idartes_eventos":
-        return bool(ev.get("fecha_inicio") and ev.get("fecha_inicio") != "N/A")
+        return bool(ev.get("fecha_inicio") and ev["fecha_inicio"] not in ("N/A", "", None))
     else:
-        return bool(ev.get("fecha") and ev.get("fecha") != "N/A")
+        return bool(ev.get("fecha") and ev["fecha"] not in ("N/A", "", None))
 
+# ----------------------------
+# Carga de datos
+# ----------------------------
 def cargar_datos():
     try:
         conn = psycopg2.connect(**DB_CONFIG)
@@ -67,18 +75,21 @@ def cargar_datos():
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         for fuente, config in FUENTES.items():
-            archivo = config["archivo"]
+            url = config["url"]
             tabla = config["tabla"]
 
             print(f"\n📥 Cargando {fuente} → {tabla}")
+            r = requests.get(url, timeout=15)
+            texto = limpiar_json(r.text)
 
             try:
-                with open(archivo, "r", encoding="utf-8") as f:
-                    texto = limpiar_json(f.read())
                 eventos = json.loads(texto)
-            except Exception as e:
-                print(f"❌ Error leyendo archivo {archivo}: {e}")
-                continue
+            except Exception:
+                try:
+                    eventos = ast.literal_eval(texto)
+                except Exception as e:
+                    print(f"❌ Error leyendo JSON de {fuente}: {e}")
+                    continue
 
             if not isinstance(eventos, list):
                 eventos = [eventos]
@@ -99,10 +110,8 @@ def cargar_datos():
                 for ejemplo in invalidos[:3]:
                     print(f"   - {ejemplo}")
 
-            # Guardar en log
-            resumen_log.append(
-                f"[{timestamp}] {fuente}: {len(validos)} válidos / {len(invalidos)} inválidos"
-            )
+            # HU-10: agregar al resumen
+            resumen_log.append(f"[{timestamp}] {fuente}: {len(validos)} válidos / {len(invalidos)} inválidos")
 
             # Insertar solo válidos
             for ev in validos:
@@ -150,7 +159,7 @@ def cargar_datos():
         conn.commit()
         print("\n🎉 Datos cargados correctamente.")
 
-        # HU-10: escribir resumen en log
+        # HU-10: guardar resumen en log
         log_path = os.path.join(BASE_DIR, "resumen_extracciones.log")
         with open(log_path, "a", encoding="utf-8") as logf:
             logf.write("\n".join(resumen_log) + "\n")
