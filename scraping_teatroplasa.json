@@ -1,104 +1,70 @@
 [
     {
         "nombre": "PROGRAMACIÓN",
-        "fecha_inicio": "2025-09-27",
-        "fecha_fin": "2025-09-27",
-        "hora": null
+        "fecha": "2025-09-27"
     },
     {
         "nombre": "JUDY BUENDÍA - MI EX FUE UN ERROR",
-        "fecha_inicio": "2025-09-27",
-        "fecha_fin": "2025-09-27",
-        "hora": null
+        "fecha": "2025-09-27"
     },
     {
         "nombre": "TODO VALE",
-        "fecha_inicio": "2025-10-03",
-        "fecha_fin": "2025-10-03",
-        "hora": null
+        "fecha": "2025-10-03"
     },
     {
         "nombre": "V DE VINILO",
-        "fecha_inicio": "2025-10-03",
-        "fecha_fin": "2025-10-03",
-        "hora": null
+        "fecha": "2025-10-03"
     },
     {
         "nombre": "ILUSIONISTAS - A OTRO NIVL",
-        "fecha_inicio": "2025-10-18",
-        "fecha_fin": "2025-10-18",
-        "hora": null
+        "fecha": "2025-10-18"
     },
     {
         "nombre": "LA GRANJA DE ZENÓN",
-        "fecha_inicio": "2025-10-18",
-        "fecha_fin": "2025-10-18",
-        "hora": null
+        "fecha": "2025-10-18"
     },
     {
         "nombre": "DREAM THEATER - TRIBUTO",
-        "fecha_inicio": "22 Al 26 De Octubre",
-        "fecha_fin": "22 Al 26 De Octubre",
-        "hora": null
+        "fecha": "2025-10-26"
     },
     {
         "nombre": "PROCULO RICO",
-        "fecha_inicio": "22 Al 26 De Octubre",
-        "fecha_fin": "22 Al 26 De Octubre",
-        "hora": null
+        "fecha": "2025-10-26"
     },
     {
         "nombre": "laura maré en concierto",
-        "fecha_inicio": "2025-11-01",
-        "fecha_fin": "2025-11-01",
-        "hora": null
+        "fecha": "2025-11-01"
     },
     {
         "nombre": "PLANCHANDO EL DESPECHO",
-        "fecha_inicio": "2025-11-01",
-        "fecha_fin": "2025-11-01",
-        "hora": null
+        "fecha": "2025-11-01"
     },
     {
         "nombre": "SAUROM - EL PRINCIPITO",
-        "fecha_inicio": "2025-11-06",
-        "fecha_fin": "2025-11-06",
-        "hora": null
+        "fecha": "2025-11-06"
     },
     {
         "nombre": "ALL WE NEED IS LOVE",
-        "fecha_inicio": "2025-11-06",
-        "fecha_fin": "2025-11-06",
-        "hora": null
+        "fecha": "2025-11-06"
     },
     {
         "nombre": "clase/mela - el aguila descalza",
-        "fecha_inicio": "2025-11-13",
-        "fecha_fin": "2025-11-13",
-        "hora": null
+        "fecha": "2025-11-13"
     },
     {
         "nombre": "JON SECADA",
-        "fecha_inicio": "2025-11-13",
-        "fecha_fin": "2025-11-13",
-        "hora": null
+        "fecha": "2025-11-13"
     },
     {
         "nombre": "ARTISTAS ASTOR PLAZA",
-        "fecha_inicio": "2025-11-20",
-        "fecha_fin": "2025-11-20",
-        "hora": null
+        "fecha": "2025-11-20"
     },
     {
         "nombre": "Teatro",
-        "fecha_inicio": "2025-11-20",
-        "fecha_fin": "2025-11-20",
-        "hora": null
+        "fecha": "2025-11-20"
     },
     {
         "nombre": "Contacto",
-        "fecha_inicio": "26, 27 & 28 De Noviembre",
-        "fecha_fin": "26, 27 & 28 De Noviembre",
-        "hora": null
+        "fecha": "2025-11-28"
     }
 ]
