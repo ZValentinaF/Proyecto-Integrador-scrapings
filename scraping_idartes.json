@@ -33,58 +33,10 @@
     },
     {
         "tipo": "Música",
-        "nombre": "Disfrute Del Festival Africa En Bogota En Escenarios Moviles De Idartes",
-        "fecha_inicio": "2025-09-26",
-        "fecha_fin": "2025-09-26",
-        "hora": "3:30 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Multidisciplinar",
-        "nombre": "Las Hermanas Peligro De Chile Llegan Suba Con El Programa Culturas En",
-        "fecha_inicio": "2025-09-26",
-        "fecha_fin": "2025-09-26",
-        "hora": "5:00 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "Gabriela Ponce Llega La Sala Gaitan",
-        "fecha_inicio": "2025-09-26",
-        "fecha_fin": "2025-09-26",
-        "hora": "7:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "La Muchacha Y Guache Presentan Sea Maiz",
-        "fecha_inicio": "2025-09-26",
-        "fecha_fin": "2025-09-26",
-        "hora": "7:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "Noche De Gala Festival Africa En Bogota",
-        "fecha_inicio": "2025-09-26",
-        "fecha_fin": "2025-09-26",
-        "hora": "8:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Música",
         "nombre": "Cierre Del Festival Africa En Bogota En La Media Torta",
         "fecha_inicio": "2025-09-27",
         "fecha_fin": "2025-09-27",
         "hora": "1:00 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Concierto Con Beatvital Para Ninas Y Ninos De   Anos",
-        "fecha_inicio": "2025-09-27",
-        "fecha_fin": "2025-09-27",
-        "hora": "2:00 pm",
         "ingreso": "LIBRE"
     },
     {
