@@ -1,12 +1,6 @@
 [
     {
         "tipo": "MÚSICA",
-        "nombre": "Rolling Ruanas –  años",
-        "fecha": "2025-09-27",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "MÚSICA",
         "nombre": "DC Cómics VS Marvel",
         "fecha": "2025-09-27",
         "ingreso": "COSTO"
@@ -68,6 +62,12 @@
     {
         "tipo": "MÚSICA",
         "nombre": "ARA MALIKIAN: INTRUSO",
+        "fecha": "2025-11-27",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "OTROS",
+        "nombre": "El Club de los Vulnerables en Medellín",
         "fecha": null,
         "ingreso": "COSTO"
     }
