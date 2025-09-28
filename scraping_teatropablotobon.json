@@ -1,18 +1,6 @@
 [
     {
         "tipo": "MÚSICA",
-        "nombre": "DC Cómics VS Marvel",
-        "fecha": "2025-09-27",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "DANZA",
-        "nombre": "Clases de baile",
-        "fecha": "2025-10-01",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "MÚSICA",
         "nombre": "Los Mirlos – Cumbia Amazónica",
         "fecha": "2025-10-02",
         "ingreso": "COSTO"
