@@ -32,30 +32,6 @@
         "ingreso": "LIBRE"
     },
     {
-        "tipo": "Música",
-        "nombre": "Cierre Del Festival Africa En Bogota En La Media Torta",
-        "fecha_inicio": "2025-09-27",
-        "fecha_fin": "2025-09-27",
-        "hora": "1:00 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "Musica Llanera Con Oscar Rondon Y Seleccion Criolla",
-        "fecha_inicio": "2025-09-27",
-        "fecha_fin": "2025-09-27",
-        "hora": "5:00 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Multidisciplinar",
-        "nombre": "Hz Realidad Aumentada En El Domo En Los  Anos De La Quinta",
-        "fecha_inicio": "2025-09-27",
-        "fecha_fin": "2025-09-27",
-        "hora": "7:30 pm",
-        "ingreso": "LIBRE"
-    },
-    {
         "tipo": "Niños y Jóvenes",
         "nombre": "Ja Shull Obra Dirigida La Primera Infancia Llega Al Museo Nacional",
         "fecha_inicio": "2025-09-28",
