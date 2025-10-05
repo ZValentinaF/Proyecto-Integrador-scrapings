@@ -13,3 +13,28 @@
 [2025-09-26 12:03:32] idartes: 36 válidos / 0 inválidos
 [2025-09-26 12:03:32] pablobon: 11 válidos / 1 inválidos
 [2025-09-26 12:03:32] plaza: 0 válidos / 17 inválidos
+{"ts_start": "2025-10-05 13:53:37", "ts_end": "2025-10-05 13:53:39", "duration_sec": 1.62, "status": "FAILED"}
+[2025-10-05 13:56:30] idartes: 38 válidos / 0 inválidos
+[2025-10-05 13:56:30] pablobon: 5 válidos / 1 inválidos
+[2025-10-05 13:56:30] plaza: 17 válidos / 0 inválidos
+{"ts_start": "2025-10-05 13:57:28", "ts_end": "2025-10-05 13:57:29", "duration_sec": 1.1, "status": "FAILED"}
+[2025-10-05 14:01:38] idartes: 38 válidos / 0 inválidos
+[2025-10-05 14:01:38] pablobon: 5 válidos / 1 inválidos
+[2025-10-05 14:01:38] plaza: 17 válidos / 0 inválidos
+{"ts_start": "2025-10-05 14:01:38", "ts_end": "2025-10-05 14:01:47", "duration_sec": 9.04, "status": "OK"}
+[2025-10-05 14:03:11] idartes: 38 válidos / 0 inválidos
+[2025-10-05 14:03:11] pablobon: 5 válidos / 1 inválidos
+[2025-10-05 14:03:11] plaza: 17 válidos / 0 inválidos
+{"ts_start": "2025-10-05 14:03:11", "ts_end": "2025-10-05 14:03:23", "duration_sec": 12.57, "status": "OK"}
+[2025-10-05 14:06:12] idartes: 38 válidos / 0 inválidos
+[2025-10-05 14:06:12] pablobon: 5 válidos / 1 inválidos
+[2025-10-05 14:06:12] plaza: 17 válidos / 0 inválidos
+{"ts_start": "2025-10-05 14:06:12", "ts_end": "2025-10-05 14:06:20", "duration_sec": 8.89, "status": "OK"}
+{"ts_start": "2025-10-05 14:10:49", "ts_end": "2025-10-05 14:10:49", "duration_sec": 0.74, "status": "FAILED"}
+{"ts_start": "2025-10-05 14:20:39", "ts_end": "2025-10-05 14:20:40", "duration_sec": 0.8, "status": "FAILED"}
+{"ts_start": "2025-10-05 14:25:25", "ts_end": "2025-10-05 14:25:25", "duration_sec": 0.75, "status": "FAILED"}
+{"ts_start": "2025-10-05 14:25:41", "ts_end": "2025-10-05 14:25:42", "duration_sec": 0.95, "status": "FAILED"}
+[2025-10-05 14:28:58] idartes: 38 válidos / 0 inválidos
+[2025-10-05 14:28:58] pablobon: 5 válidos / 1 inválidos
+[2025-10-05 14:28:58] plaza: 17 válidos / 0 inválidos
+{"ts_start": "2025-10-05 14:28:58", "ts_end": "2025-10-05 14:29:07", "duration_sec": 8.53, "status": "OK"}
