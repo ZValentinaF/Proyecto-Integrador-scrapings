@@ -1,30 +1,6 @@
 [
     {
         "tipo": "MÚSICA",
-        "nombre": "Los Mirlos – Cumbia Amazónica",
-        "fecha": "2025-10-02",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "TEATRO",
-        "nombre": "‘Viernes Santo’ de Teatriados",
-        "fecha": "2025-10-03",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "MÚSICA",
-        "nombre": "Vivxs para cantarlo",
-        "fecha": "2025-10-04",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "MÚSICA",
-        "nombre": "Reina de Corazones – Festival de Festivales",
-        "fecha": "2025-10-05",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "MÚSICA",
         "nombre": "Canticuentos: La aventura pirata",
         "fecha": "2025-10-09",
         "ingreso": "COSTO"
