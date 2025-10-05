@@ -1,7 +1,7 @@
 [
     {
         "tipo": "Artes Plásticas y Visuales",
-        "nombre": "Bordar La Palabra",
+        "nombre": "Bordar la palabra",
         "fecha_inicio": "2025-08-26",
         "fecha_fin": "2025-10-07",
         "hora": null,
@@ -9,7 +9,7 @@
     },
     {
         "tipo": "Literatura",
-        "nombre": "Ciclo De Lecturas Para Acompanar El Duelo",
+        "nombre": "Ciclo de Lecturas para acompañar el duelo",
         "fecha_inicio": "2025-09-17",
         "fecha_fin": "2025-11-06",
         "hora": null,
@@ -17,7 +17,7 @@
     },
     {
         "tipo": "Artes Plásticas y Visuales",
-        "nombre": "Bienal Internacional De Arte Y Ciudad Bog",
+        "nombre": "Bienal Internacional de Arte y Ciudad BOG",
         "fecha_inicio": "2025-09-20",
         "fecha_fin": "2025-11-09",
         "hora": null,
@@ -25,103 +25,71 @@
     },
     {
         "tipo": "Artes Plásticas y Visuales",
-        "nombre": "Realmix Las Ficciones De La Materia",
+        "nombre": "Realmix: Las ficciones de la materia",
         "fecha_inicio": "2025-09-25",
         "fecha_fin": "2025-11-10",
         "hora": null,
         "ingreso": "LIBRE"
     },
     {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Ja Shull Obra Dirigida La Primera Infancia Llega Al Museo Nacional",
-        "fecha_inicio": "2025-09-28",
-        "fecha_fin": "2025-09-28",
-        "hora": "11:30 am",
-        "ingreso": "LIBRE"
-    },
-    {
         "tipo": "Artes Plásticas y Visuales",
-        "nombre": "Encuentro De Palabra Arquitectura Emocional Cobijos Y Moradas",
-        "fecha_inicio": "2025-09-28",
-        "fecha_fin": "2025-09-28",
-        "hora": "2:00 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Gori Gori La Historia De Un Nino Su Abuelo Y Un Viaje Fantastico",
-        "fecha_inicio": "2025-09-28",
-        "fecha_fin": "2025-09-28",
-        "hora": "3:00 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "Gaitan Al Aire Vol  Llega Con Tony Allen Meets La Boa",
-        "fecha_inicio": "2025-10-01",
-        "fecha_fin": "2025-10-01",
-        "hora": "3:00 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Teatro",
-        "nombre": "El Colegio Del Cuerpo Presenta Suite Akhunov",
-        "fecha_inicio": "2025-10-01",
-        "fecha_fin": "2025-10-01",
-        "hora": "8:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Artes Plásticas y Visuales",
-        "nombre": "Iv Salon De Artistas Arte La Ky",
+        "nombre": "IV Salón de Artistas Arte a la KY",
         "fecha_inicio": "2025-10-02",
         "fecha_fin": "2025-11-17",
         "hora": null,
         "ingreso": "LIBRE"
     },
     {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "La casa vacía, nuevo libro digital interactivo para niñas y niños de  a  años",
+        "fecha_inicio": "2025-10-04",
+        "fecha_fin": "2025-10-31",
+        "hora": null,
+        "ingreso": "OTRO"
+    },
+    {
+        "tipo": "Artes Audiovisuales",
+        "nombre": "Vacaciones recreativas de octubre en la Cinemateca de Bogotá",
+        "fecha_inicio": "2025-10-04",
+        "fecha_fin": "2025-10-12",
+        "hora": null,
+        "ingreso": "COSTO"
+    },
+    {
         "tipo": "Música",
-        "nombre": "Desorden Social De La Guerra Al Arte Llega Escenarios Moviles",
-        "fecha_inicio": "2025-10-02",
-        "fecha_fin": "2025-10-02",
-        "hora": "6:00 pm",
+        "nombre": "Disfrute del Caleidoscopio sonoro de los Escenarios Móviles con rap",
+        "fecha_inicio": "2025-10-10",
+        "fecha_fin": "2025-10-10",
+        "hora": "5:00 pm",
         "ingreso": "LIBRE"
     },
     {
         "tipo": "Teatro",
-        "nombre": "Flor De Marmol De Mi Compania Teatro En La Sala Gaitan",
-        "fecha_inicio": "2025-10-03",
-        "fecha_fin": "2025-10-03",
+        "nombre": "La Compañía Diookaju presenta Raíz de ébano",
+        "fecha_inicio": "2025-10-10",
+        "fecha_fin": "2025-10-10",
         "hora": "7:00 pm",
         "ingreso": "COSTO"
     },
     {
-        "tipo": "Teatro",
-        "nombre": "La Quinta Del Lobo Presenta Hybris",
-        "fecha_inicio": "2025-10-03",
-        "fecha_fin": "2025-10-03",
+        "tipo": "Música",
+        "nombre": "El Planetario de Bogotá presenta: Su Majestad Imperial Silverio",
+        "fecha_inicio": "2025-10-10",
+        "fecha_fin": "2025-10-10",
         "hora": "8:00 pm",
         "ingreso": "COSTO"
     },
     {
         "tipo": "Multidisciplinar",
-        "nombre": "Llega La Noche Payasa En Tablas Al Aire De Escenarios Moviles",
-        "fecha_inicio": "2025-10-04",
-        "fecha_fin": "2025-10-04",
-        "hora": "6:00 pm",
+        "nombre": "Tríptico – Día de la Diversidad Étnica y Cultural en Escenarios Móviles",
+        "fecha_inicio": "2025-10-11",
+        "fecha_fin": "2025-10-11",
+        "hora": "5:00 pm",
         "ingreso": "LIBRE"
     },
     {
         "tipo": "Música",
-        "nombre": "Maria Cristina Plata Llega Con Su Casi Te Creo Tour",
-        "fecha_inicio": "2025-10-04",
-        "fecha_fin": "2025-10-04",
-        "hora": "8:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "Jeff Mills El Mago De Detroit Llega Al Planetario De Bogota",
+        "nombre": "Jeff Mills, el Mago de Detroit, llega al Planetario de Bogotá",
         "fecha_inicio": "2025-10-11",
         "fecha_fin": "2025-10-11",
         "hora": "8:00 pm",
@@ -129,15 +97,23 @@
     },
     {
         "tipo": "Niños y Jóvenes",
-        "nombre": "Los Sonidos De Zazous Resonaran En El Teatro El Parque",
+        "nombre": "Disfrute de Títeres y Canciones con los Escenarios Móviles de Idartes",
+        "fecha_inicio": "2025-10-12",
+        "fecha_fin": "2025-10-12",
+        "hora": "11:00 am",
+        "ingreso": "LIBRE"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "Los sonidos de Zazous resonarán en el Teatro El Parque",
         "fecha_inicio": "2025-10-16",
         "fecha_fin": "2025-10-16",
         "hora": "7:00 pm",
         "ingreso": "COSTO"
     },
     {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Viva Alkfra Un Performance Ganador De La Beca Lep En El Teatro El",
+        "tipo": "Teatro",
+        "nombre": "Oblivio Teatro presenta La esclusa",
         "fecha_inicio": "2025-10-17",
         "fecha_fin": "2025-10-17",
         "hora": "7:00 pm",
@@ -145,7 +121,15 @@
     },
     {
         "tipo": "Niños y Jóvenes",
-        "nombre": "Viva Dos Dias Recreativos Con Montunos Taller De Mascaras",
+        "nombre": "Viva 'Alkφra', un performance ganador de la Beca LEP, en el Teatro El Parque",
+        "fecha_inicio": "2025-10-17",
+        "fecha_fin": "2025-10-17",
+        "hora": "7:00 pm",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "Viva dos días recreativos con 'Montunos', taller de máscaras",
         "fecha_inicio": "2025-10-18",
         "fecha_fin": "2025-10-19",
         "hora": null,
@@ -153,15 +137,39 @@
     },
     {
         "tipo": "Niños y Jóvenes",
-        "nombre": "El Nino De Arena Del Festival Manuelucho Se Presenta En El Teatro El Parque",
+        "nombre": "Cazadores de Sonidos",
+        "fecha_inicio": "2025-10-18",
+        "fecha_fin": "2025-09-18",
+        "hora": null,
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "El arte urbano llega con Escenarios Móviles a la Biblioteca El Tintal",
+        "fecha_inicio": "2025-10-18",
+        "fecha_fin": "2025-10-18",
+        "hora": "2:00 pm",
+        "ingreso": "LIBRE"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "'El Niño de Arena', del Festival Manuelucho, se presenta en el Teatro El Parque",
         "fecha_inicio": "2025-10-18",
         "fecha_fin": "2025-10-18",
         "hora": "3:00 pm",
         "ingreso": "COSTO"
     },
     {
+        "tipo": "Música",
+        "nombre": "Margot presenta su disco: The Villain",
+        "fecha_inicio": "2025-10-18",
+        "fecha_fin": "2025-10-18",
+        "hora": "7:00 pm",
+        "ingreso": "COSTO"
+    },
+    {
         "tipo": "Artes Plásticas y Visuales",
-        "nombre": "Encuentro De Palabra Arquitectura Emocional Cobijos Y Moradas",
+        "nombre": "Encuentro de palabra - Arquitectura emocional: Cobijos y Moradas",
         "fecha_inicio": "2025-10-19",
         "fecha_fin": "2025-10-19",
         "hora": "2:00 pm",
@@ -169,7 +177,7 @@
     },
     {
         "tipo": "Niños y Jóvenes",
-        "nombre": "Tronco Fuerte Una Obra Naturalmente Divertida",
+        "nombre": "'Tronco fuerte': Una obra naturalmente divertida",
         "fecha_inicio": "2025-10-19",
         "fecha_fin": "2025-10-19",
         "hora": "3:00 pm",
@@ -177,15 +185,31 @@
     },
     {
         "tipo": "Niños y Jóvenes",
-        "nombre": "El Conjunto Media Luna Llega Al Teatro El Parque Con Su Poder Musical",
+        "nombre": "El Conjunto Media Luna llega al Teatro El Parque con su poder musical",
         "fecha_inicio": "2025-10-23",
         "fecha_fin": "2025-10-23",
         "hora": "7:00 pm",
         "ingreso": "COSTO"
     },
     {
+        "tipo": "Multidisciplinar",
+        "nombre": "BOTERO vive… ¡y se convierte en un ballet!",
+        "fecha_inicio": "2025-10-23",
+        "fecha_fin": "2025-10-23",
+        "hora": "8:00 pm",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "Solo cosas maravillosas",
+        "fecha_inicio": "2025-10-24",
+        "fecha_fin": "2025-10-24",
+        "hora": "7:00 pm",
+        "ingreso": "COSTO"
+    },
+    {
         "tipo": "Niños y Jóvenes",
-        "nombre": "Danza Y Stand Comedy Con Las Cuarentonas En El Teatro El Parque",
+        "nombre": "Danza y stand up comedy con 'Las Cuarentonas', en el Teatro El Parque",
         "fecha_inicio": "2025-10-24",
         "fecha_fin": "2025-10-24",
         "hora": "7:00 pm",
@@ -193,7 +217,7 @@
     },
     {
         "tipo": "Música",
-        "nombre": "Zeta Bosio El Bajista Original De Soda Stereo Hara Temblar Bogota",
+        "nombre": "Zeta Bosio, el bajista original de Soda Stereo, hará temblar Bogotá",
         "fecha_inicio": "2025-10-24",
         "fecha_fin": "2025-10-24",
         "hora": "8:00 pm",
@@ -201,7 +225,7 @@
     },
     {
         "tipo": "Niños y Jóvenes",
-        "nombre": "El Festival Manuelucho Presenta Klatun Una Historia Cosmica",
+        "nombre": "El Festival Manuelucho presenta 'Klatún', una historia cósmica",
         "fecha_inicio": "2025-10-25",
         "fecha_fin": "2025-10-25",
         "hora": "3:00 pm",
@@ -209,10 +233,74 @@
     },
     {
         "tipo": "Niños y Jóvenes",
-        "nombre": "Un Son En Mi Mansion Regresa Al Teatro El Parque Con Ritmo Y Sabor",
+        "nombre": "'Un son en mi mansión' regresa al Teatro El Parque con ritmo y sabor",
         "fecha_inicio": "2025-10-26",
         "fecha_fin": "2025-10-26",
         "hora": "3:00 pm",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "Artes Audiovisuales",
+        "nombre": "Batman regresa en el Centro Felicidad Chapinero",
+        "fecha_inicio": "2025-10-30",
+        "fecha_fin": "2025-10-30",
+        "hora": "5:30 pm",
+        "ingreso": "LIBRE"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "Gypsy Express con La Gata Cirko y Burning Caravan",
+        "fecha_inicio": "2025-10-30",
+        "fecha_fin": "2025-10-30",
+        "hora": "8:00 pm",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "El espectro del doctor Russi: memorias de terror en La Candelaria",
+        "fecha_inicio": "2025-10-31",
+        "fecha_fin": "2025-10-31",
+        "hora": "7:00 pm",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "Multidisciplinar",
+        "nombre": "La Noche de Halloween se celebra con el Caleidoscopio Sonoro de los Escenarios Móviles",
+        "fecha_inicio": "2025-10-31",
+        "fecha_fin": "2025-10-31",
+        "hora": "8:00 pm",
+        "ingreso": "LIBRE"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "Bacatá Producciones presenta Plomo",
+        "fecha_inicio": "2025-11-07",
+        "fecha_fin": "2025-11-07",
+        "hora": "7:00 pm",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "La pajarera: gestos femeninos de resistencia",
+        "fecha_inicio": "2025-11-14",
+        "fecha_fin": "2025-11-14",
+        "hora": "7:00 pm",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "Burí, un viaje mágico de títeres",
+        "fecha_inicio": "2025-11-17",
+        "fecha_fin": "2025-11-17",
+        "hora": "4:00 pm",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "Teatro",
+        "nombre": "Christian Carrillo interpreta: Gallinazo Departamental",
+        "fecha_inicio": "2025-11-28",
+        "fecha_fin": "2025-11-28",
+        "hora": "7:00 pm",
         "ingreso": "COSTO"
     }
 ]
