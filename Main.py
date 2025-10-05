@@ -1,7 +1,9 @@
+import importlib
 try:
-    import print_safe 
-except Exception:
+    importlib.import_module("print_safe")
+except ModuleNotFoundError:
     pass
+
 
 import argparse
 import subprocess
