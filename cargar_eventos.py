@@ -1,56 +1,110 @@
-import psycopg2
-import requests
-import json
-import ast
+# cargar_datos.py — Local-first con fallback remoto, HU-07 / HU-10 / Etiquetas en raw
+import os
 import re
+import json
+import time
+from pathlib import Path
 from datetime import datetime
 
+import requests
+import psycopg2
+
+# ===================== Configuración BD =====================
 DB_CONFIG = {
     "host": "awsaurorapg17-instance-1.cav2004g2f8p.us-east-1.rds.amazonaws.com",
     "port": "5432",
     "dbname": "QueHayPaHacer",
     "user": "postgres",
-    "password": "postgres"
+    "password": "postgres",
 }
+
+# ===================== Rutas / Fuentes ======================
+BASE_DIR = Path(__file__).resolve().parent
+FRESH_HOURS = 6  # umbral de "frescura" del JSON local
 
 FUENTES = {
     "idartes": {
+        "archivo": str(BASE_DIR / "scraping_idartes.json"),
         "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/main/scraping_idartes.json",
-        "tabla": "idartes_eventos"
+        "tabla": "idartes_eventos",
+        "ciudad": "Bogotá",
     },
     "pablobon": {
-        "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/refs/heads/main/scraping_teatropablotobon.json",
-        "tabla": "teatropablobon_eventos"
+        "archivo": str(BASE_DIR / "scraping_teatropablotobon.json"),
+        "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/main/scraping_teatropablotobon.json",
+        "tabla": "teatropablobon_eventos",
+        "ciudad": "Medellín",
     },
     "plaza": {
+        "archivo": str(BASE_DIR / "scraping_teatroplasa.json"),
         "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/main/scraping_teatroplasa.json",
-        "tabla": "teatroplaza_eventos"
-    }
+        "tabla": "teatroplaza_eventos",
+        "ciudad": "Cali",
+    },
 }
 
-# HU-08 (Sprint 3): Ciudad por fuente para etiquetado automático
-CIUDAD_POR_FUENTE = {
-    "idartes": "Bogotá",
-    "pablobon": "Medellín",
-    "plaza": "Cali"
-}
-
-# HU-06 (Sprint 3): ruta del log de corridas
-LOG_PATH = "resumen_extracciones.log"
-
-def limpiar_json(texto: str):
+# ===================== Utilidades JSON ======================
+def limpiar_json(texto: str) -> str:
+    """Intenta limpiar texto para que sea JSON válido."""
     if texto.startswith("\ufeff"):
-        texto = texto.lstrip("\ufeff")
+        texto = texto.lstrip("\ufeff")  # quitar BOM
     texto = texto.strip()
-    if "][" in texto:
+    if "][" in texto:  # caso típico de listas pegadas
         texto = texto.replace("][", ",")
-    if not texto.startswith("["):
+    if not texto.startswith("["):  # buscar primer bloque de lista si hay basura
         match = re.search(r"\[.*\]", texto, re.DOTALL)
         if match:
             texto = match.group(0)
     return texto
 
+def es_fresco(path: str, horas: int = FRESH_HOURS) -> bool:
+    p = Path(path)
+    if not p.exists():
+        return False
+    edad_horas = (time.time() - p.stat().st_mtime) / 3600
+    return edad_horas <= horas
+
+def leer_eventos(cfg: dict):
+    """
+    Lee eventos de archivo local si existe y está 'fresco'.
+    Si no, hace fallback a la URL remota y guarda copia local.
+    """
+    archivo = cfg.get("archivo")
+    url = cfg.get("url")
+
+    # 1) Local "fresco"
+    if archivo and es_fresco(archivo):
+        with open(archivo, "r", encoding="utf-8") as f:
+            txt = limpiar_json(f.read())
+        try:
+            return json.loads(txt)
+        except Exception:
+            import ast
+            return ast.literal_eval(txt)
+
+    # 2) Fallback remoto (y guarda copia local)
+    if url:
+        r = requests.get(url, timeout=20)
+        r.raise_for_status()
+        data = r.json()
+        if archivo:
+            try:
+                with open(archivo, "w", encoding="utf-8") as f:
+                    json.dump(data, f, ensure_ascii=False, indent=2)
+            except Exception:
+                # si no se puede guardar, igual retornamos los datos
+                pass
+        return data
+
+    raise FileNotFoundError("No hay archivo local fresco ni URL de respaldo definida.")
+
+# ============== HU-07 — Validación mínima ===================
 def obtener_fecha_inicio(ev: dict) -> str:
+    """
+    Devuelve la fecha 'clave':
+    - Si existe 'fecha_inicio' válida, úsala.
+    - Si no, usa 'fecha' (fuentes de fecha simple).
+    """
     fi = ev.get("fecha_inicio")
     if fi and fi != "N/A":
         return fi
@@ -61,8 +115,9 @@ def obtener_fecha_inicio(ev: dict) -> str:
 
 def es_valido(ev: dict) -> bool:
     """
-    (Sprint 2 – HU-07, referencial)
-    Control de calidad básico: requiere nombre y al menos una fecha.
+    Reglas mínimas:
+    - nombre no vacío
+    - alguna fecha válida (fecha_inicio o fecha)
     """
     nombre = ev.get("nombre")
     if not nombre or nombre in ("N/A", "", None):
@@ -70,94 +125,68 @@ def es_valido(ev: dict) -> bool:
     fi = obtener_fecha_inicio(ev)
     return fi not in ("N/A", "", None)
 
-# HU-08 (Sprint 3): Etiquetado automático (categoría, ingreso normalizado y ciudad)
-def inferir_etiquetas(ev: dict, ciudad: str):
-    nombre = (ev.get("nombre") or "").lower()
-    tipo   = (ev.get("tipo") or "").lower()
-    ingreso_raw = (ev.get("ingreso") or "").lower()
-    texto = f"{nombre} {tipo}"
+# ===== Etiquetado automático (categoría / ingreso / ciudad) =====
+def inferir_categoria(ev: dict) -> str:
+    txt = " ".join([str(ev.get("tipo", "")), str(ev.get("nombre", ""))]).lower()
+    if any(k in txt for k in ("música", "musica", "concierto", "banda", "orquesta")):
+        return "MÚSICA"
+    if "teatro" in txt or "obra" in txt:
+        return "TEATRO"
+    if "danza" in txt or "ballet" in txt:
+        return "DANZA"
+    if "comedia" in txt or "stand up" in txt or "stand-up" in txt:
+        return "COMEDIA"
+    return "OTROS"
 
-    # Categoría por palabras clave
-    if any(k in texto for k in ["música", "musica", "concierto", "banda", "festival"]):
-        cat = "MÚSICA"
-    elif any(k in texto for k in ["teatro", "obra", "dramaturgia"]):
-        cat = "TEATRO"
-    elif any(k in texto for k in ["danza", "baile", "ballet"]):
-        cat = "DANZA"
-    elif any(k in texto for k in ["comedia", "stand up", "standup", "humor"]):
-        cat = "COMEDIA"
-    else:
-        cat = "OTROS"
-
-    # Ingreso normalizado
+def inferir_ingreso(ev: dict) -> str:
+    ingreso_raw = str(ev.get("ingreso", "")).lower()
     if "libre" in ingreso_raw:
-        ing = "LIBRE"
-    elif "costo" in ingreso_raw or "$" in ingreso_raw or "boleta" in ingreso_raw:
-        ing = "COSTO"
-    elif "inscrip" in ingreso_raw:
-        ing = "INSCRIPCION"
-    else:
-        ing = "OTRO"
+        return "LIBRE"
+    if "inscrip" in ingreso_raw:
+        return "INSCRIPCION"
+    if "costo" in ingreso_raw or "$" in ingreso_raw or "bole" in ingreso_raw:
+        return "COSTO"
+    return "OTRO"
 
-    return {"categoria": cat, "ingreso_norm": ing, "ciudad": ciudad}
-
-def asegurar_indices_unicos(cur):
+def enriquecer_raw_con_tags(ev: dict, ciudad: str) -> dict:
     """
-    Asegura los índices únicos que usa ON CONFLICT (idempotencia).
-    (Sigue siendo Sprint 2/infra; lo dejamos comentado para claridad)
+    Agrega 'tags' al raw con categoría, ingreso y ciudad (no cambia el esquema).
     """
-    cur.execute("""
-        CREATE UNIQUE INDEX IF NOT EXISTS ux_idartes_eventos_nfi
-        ON idartes_eventos (nombre, fecha_inicio, fecha_fin);
-    """)
-    cur.execute("""
-        CREATE UNIQUE INDEX IF NOT EXISTS ux_teatropablobon_eventos_nf
-        ON teatropablobon_eventos (nombre, fecha);
-    """)
-    cur.execute("""
-        CREATE UNIQUE INDEX IF NOT EXISTS ux_teatroplaza_eventos_nf
-        ON teatroplaza_eventos (nombre, fecha);
-    """)
+    raw_obj = dict(ev)
+    tags = set(raw_obj.get("tags", []))
+    tags.add(inferir_categoria(ev))
+    tags.add(inferir_ingreso(ev))
+    if ciudad:
+        tags.add(ciudad)
+    raw_obj["tags"] = sorted(tags)
+    return raw_obj
 
+# ===================== Carga principal ======================
 def cargar_datos():
-    # HU-06 (Sprint 3): inicio de corrida (para medir duración/estado)
-    ts_start = datetime.now()
-    status = "OK"
-
+    conn = None
     try:
         conn = psycopg2.connect(**DB_CONFIG)
         cur = conn.cursor()
-        print("✅ Conexión establecida")
+        print("Conexion establecida")
 
-        asegurar_indices_unicos(cur)
-        conn.commit()
+        resumen_log = []
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-        resumen_log = []  # (Sprint 2 – HU-10) Resumen por fuente; lo mantenemos
-        timestamp = ts_start.strftime("%Y-%m-%d %H:%M:%S")
+        for fuente, cfg in FUENTES.items():
+            tabla = cfg["tabla"]
+            ciudad = cfg.get("ciudad", "")
 
-        for fuente, config in FUENTES.items():
-            url = config["url"]
-            tabla = config["tabla"]
-            ciudad = CIUDAD_POR_FUENTE.get(fuente, "N/A")  # HU-08: ciudad para tags
-            print(f"\n📥 Descargando {fuente} desde {url}")
-
-            r = requests.get(url, timeout=20)
-            texto = limpiar_json(r.text)
-
+            print(f"\nCargando {fuente} -> {tabla}")
             try:
-                eventos = json.loads(texto)
-            except Exception:
-                try:
-                    eventos = ast.literal_eval(texto)
-                except Exception as e:
-                    print(f"❌ Error leyendo JSON de {fuente}: {e}")
-                    resumen_log.append(f"[{timestamp}] {fuente}: 0 válidos / 0 inválidos (error: {e})")
-                    continue
+                eventos = leer_eventos(cfg)
+            except Exception as e:
+                print(f"  Error leyendo datos de la fuente '{fuente}': {e}")
+                continue
 
             if not isinstance(eventos, list):
                 eventos = [eventos]
 
-            # (Sprint 2 – HU-07) Validación básica
+            # HU-07 — Validación
             validos, invalidos = [], []
             for ev in eventos:
                 if es_valido(ev):
@@ -165,26 +194,25 @@ def cargar_datos():
                 else:
                     invalidos.append(ev)
 
-            print(f"   → {len(eventos)} eventos encontrados")
-            print(f"   ✅ Válidos: {len(validos)}")
-            print(f"   ❌ Inválidos: {len(invalidos)}")
+            print(f"   -> {len(eventos)} eventos encontrados")
+            print(f"   Validos: {len(validos)}")
+            print(f"   Invalidos: {len(invalidos)}")
             if invalidos:
-                print("   Ejemplos de inválidos:")
+                print("   Ejemplos de invalidos:")
                 for ejemplo in invalidos[:3]:
                     print(f"   - {ejemplo}")
 
-            # (Sprint 2 – HU-10) Resumen por fuente
-            resumen_log.append(
-                f"[{timestamp}] {fuente}: {len(validos)} válidos / {len(invalidos)} inválidos"
-            )
+            # HU-10 — Resumen por fuente (para log)
+            resumen_log.append(f"[{timestamp}] {fuente}: {len(validos)} validos / {len(invalidos)} invalidos")
 
-            # Inserción con HU-08 (Sprint 3): tags en raw (incluye ciudad)
+            # Inserción por tabla (sin cambiar esquema)
             for ev in validos:
-                fecha_inicio = obtener_fecha_inicio(ev)
-                raw_ev = dict(ev)
-                raw_ev["tags"] = inferir_etiquetas(ev, ciudad)  # HU-08 (Sprint 3)
+                raw_obj = enriquecer_raw_con_tags(ev, ciudad)
+                raw_json = json.dumps(raw_obj, ensure_ascii=False)
 
                 if tabla == "idartes_eventos":
+                    # columnas: (tipo, nombre, fecha_inicio, fecha_fin, ingreso, raw)
+                    fecha_inicio = obtener_fecha_inicio(ev)
                     cur.execute(f"""
                         INSERT INTO {tabla} (tipo, nombre, fecha_inicio, fecha_fin, ingreso, raw)
                         VALUES (%s, %s, %s, %s, %s, %s)
@@ -194,12 +222,13 @@ def cargar_datos():
                         ev.get("nombre", "N/A"),
                         fecha_inicio,
                         ev.get("fecha_fin", None),
-                        ev.get("ingreso", "N/A"),
-                        json.dumps(raw_ev, ensure_ascii=False)
+                        inferir_ingreso(ev),
+                        raw_json,
                     ))
 
                 elif tabla == "teatropablobon_eventos":
-                    fecha = ev.get("fecha") or fecha_inicio or "N/A"
+                    # columnas: (tipo, nombre, fecha, ingreso, raw)
+                    fecha = ev.get("fecha") or obtener_fecha_inicio(ev) or "N/A"
                     cur.execute(f"""
                         INSERT INTO {tabla} (tipo, nombre, fecha, ingreso, raw)
                         VALUES (%s, %s, %s, %s, %s)
@@ -208,12 +237,13 @@ def cargar_datos():
                         ev.get("tipo", "N/A"),
                         ev.get("nombre", "N/A"),
                         fecha,
-                        ev.get("ingreso", "N/A"),
-                        json.dumps(raw_ev, ensure_ascii=False)
+                        inferir_ingreso(ev),
+                        raw_json,
                     ))
 
                 elif tabla == "teatroplaza_eventos":
-                    fecha = ev.get("fecha") or fecha_inicio or "N/A"
+                    # columnas: (nombre, fecha, raw)
+                    fecha = ev.get("fecha") or obtener_fecha_inicio(ev) or "N/A"
                     cur.execute(f"""
                         INSERT INTO {tabla} (nombre, fecha, raw)
                         VALUES (%s, %s, %s)
@@ -221,41 +251,37 @@ def cargar_datos():
                     """, (
                         ev.get("nombre", "N/A"),
                         fecha,
-                        json.dumps(raw_ev, ensure_ascii=False)
+                        raw_json,
                     ))
 
             conn.commit()
 
-        print("\n🎉 Datos cargados correctamente.")
+        print("\nDatos cargados correctamente.")
 
-        # (Sprint 2 – HU-10) Guardar resumen por fuente
-        with open("resumen_extracciones.log", "a", encoding="utf-8") as logf:
-            logf.write("\n".join(resumen_log) + "\n")
+        # HU-10 — Guardar resumen en log local del proyecto
+        log_path = BASE_DIR / "resumen_extracciones.log"
+        try:
+            with open(log_path, "a", encoding="utf-8") as logf:
+                logf.write("\n".join(resumen_log) + "\n")
+        except Exception:
+            # no interrumpas la carga si falla el log
+            pass
+
+        cur.close()
+        conn.close()
 
     except Exception as e:
-        status = "FAILED"
-        print("❌ Error general:", e)
+        print("Error general al cargar datos:", e)
+        if conn:
+            try:
+                conn.rollback()
+            except Exception:
+                pass
+            try:
+                conn.close()
+            except Exception:
+                pass
 
-    finally:
-        # HU-06 (Sprint 3): registrar corrida (duración/estado) para métricas
-        ts_end = datetime.now()
-        duration = (ts_end - ts_start).total_seconds()
-        entry = {
-            "ts_start": ts_start.strftime("%Y-%m-%d %H:%M:%S"),
-            "ts_end": ts_end.strftime("%Y-%m-%d %H:%M:%S"),
-            "duration_sec": round(duration, 2),
-            "status": status
-        }
-        try:
-            with open(LOG_PATH, "a", encoding="utf-8") as f:
-                f.write(json.dumps(entry, ensure_ascii=False) + "\n")
-        except Exception as e:
-            print("⚠️ No se pudo escribir el log de métricas:", e)
-
-        try:
-            cur.close(); conn.close()
-        except:
-            pass
 
 if __name__ == "__main__":
     cargar_datos()
