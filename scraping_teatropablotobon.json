@@ -1,12 +1,6 @@
 [
     {
         "tipo": "MÚSICA",
-        "nombre": "Canticuentos: La aventura pirata",
-        "fecha": "2025-10-09",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "MÚSICA",
         "nombre": "Los de Adentro en Medellín",
         "fecha": "2025-10-16",
         "ingreso": "COSTO"
