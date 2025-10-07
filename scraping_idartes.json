@@ -80,6 +80,14 @@
         "ingreso": "COSTO"
     },
     {
+        "tipo": "Música",
+        "nombre": "Concierto música andina con Rizoma Sur",
+        "fecha_inicio": "2025-10-11",
+        "fecha_fin": "2025-10-11",
+        "hora": "5:00 pm",
+        "ingreso": "LIBRE"
+    },
+    {
         "tipo": "Multidisciplinar",
         "nombre": "Tríptico – Día de la Diversidad Étnica y Cultural en Escenarios Móviles",
         "fecha_inicio": "2025-10-11",
@@ -96,11 +104,35 @@
         "ingreso": "COSTO"
     },
     {
+        "tipo": "Artes Audiovisuales",
+        "nombre": "Cinemateca al Parque llega a la localidad de Usaquén",
+        "fecha_inicio": "2025-10-12",
+        "fecha_fin": "2025-10-12",
+        "hora": "9:00 am",
+        "ingreso": "LIBRE"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "Obra Alimal para niñas y niños de  a  años en Usaquén",
+        "fecha_inicio": "2025-10-12",
+        "fecha_fin": "2025-10-12",
+        "hora": "10:00 am",
+        "ingreso": "LIBRE"
+    },
+    {
         "tipo": "Niños y Jóvenes",
         "nombre": "Disfrute de Títeres y Canciones con los Escenarios Móviles de Idartes",
         "fecha_inicio": "2025-10-12",
         "fecha_fin": "2025-10-12",
         "hora": "11:00 am",
+        "ingreso": "LIBRE"
+    },
+    {
+        "tipo": "Multidisciplinar",
+        "nombre": "Point, de Jordi Bertran, en Ciudad Bolívar",
+        "fecha_inicio": "2025-10-12",
+        "fecha_fin": "2025-10-12",
+        "hora": "3:00 pm",
         "ingreso": "LIBRE"
     },
     {
@@ -160,6 +192,14 @@
         "ingreso": "COSTO"
     },
     {
+        "tipo": "Teatro",
+        "nombre": "Mi árbol y yo, de la Corporación El Laberinto, en La Pilona",
+        "fecha_inicio": "2025-10-18",
+        "fecha_fin": "2025-10-18",
+        "hora": "5:00 pm",
+        "ingreso": "LIBRE"
+    },
+    {
         "tipo": "Música",
         "nombre": "Margot presenta su disco: The Villain",
         "fecha_inicio": "2025-10-18",
@@ -201,6 +241,14 @@
     },
     {
         "tipo": "Teatro",
+        "nombre": "Tronco fuerte: una obra, naturalmente divertida",
+        "fecha_inicio": "2025-10-24",
+        "fecha_fin": "2025-10-24",
+        "hora": "3:00 pm",
+        "ingreso": "LIBRE"
+    },
+    {
+        "tipo": "Teatro",
         "nombre": "Solo cosas maravillosas",
         "fecha_inicio": "2025-10-24",
         "fecha_fin": "2025-10-24",
@@ -224,12 +272,36 @@
         "ingreso": "COSTO"
     },
     {
+        "tipo": "Artes Audiovisuales",
+        "nombre": "Cinemateca al Parque llega a la localidad de Antonio Nariño",
+        "fecha_inicio": "2025-10-25",
+        "fecha_fin": "2025-10-25",
+        "hora": "10:00 am",
+        "ingreso": "LIBRE"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "Un monstruo tierno y muy verde llega a la Virgilio",
+        "fecha_inicio": "2025-10-25",
+        "fecha_fin": "2025-10-25",
+        "hora": "11:00 am",
+        "ingreso": "LIBRE"
+    },
+    {
         "tipo": "Niños y Jóvenes",
         "nombre": "El Festival Manuelucho presenta 'Klatún', una historia cósmica",
         "fecha_inicio": "2025-10-25",
         "fecha_fin": "2025-10-25",
         "hora": "3:00 pm",
         "ingreso": "COSTO"
+    },
+    {
+        "tipo": "Niños y Jóvenes",
+        "nombre": "Prepárense para la décima versión de Bebés al Parque en la ciudad",
+        "fecha_inicio": "2025-10-26",
+        "fecha_fin": "2025-10-26",
+        "hora": "10:00 am",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Niños y Jóvenes",
