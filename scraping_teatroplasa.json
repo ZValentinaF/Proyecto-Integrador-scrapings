@@ -1,11 +1,7 @@
 [
     {
         "nombre": "PROGRAMACIÓN",
-        "fecha": "2025-10-18"
-    },
-    {
-        "nombre": "V DE VINILO",
-        "fecha": "2025-10-18"
+        "fecha": "2025-10-26"
     },
     {
         "nombre": "ILUSIONISTAS - A OTRO NIVL",
@@ -13,7 +9,7 @@
     },
     {
         "nombre": "GELO ARANGO - SOLTAR EL NUDO",
-        "fecha": "2025-10-26"
+        "fecha": "2025-10-30"
     },
     {
         "nombre": "LA GRANJA DE ZENÓN",
@@ -21,23 +17,31 @@
     },
     {
         "nombre": "DREAM THEATER - TRIBUTO",
-        "fecha": "2025-10-30"
+        "fecha": "2025-11-02"
+    },
+    {
+        "nombre": "MONÓLOGOS SIN PROPINA",
+        "fecha": "2025-11-02"
     },
     {
         "nombre": "LA MOSCA",
-        "fecha": "2025-11-02"
+        "fecha": "2025-11-06"
     },
     {
         "nombre": "PROCULO RICO",
-        "fecha": "2025-11-02"
+        "fecha": "2025-11-06"
+    },
+    {
+        "nombre": "humor de barrio - el parcero",
+        "fecha": "2025-11-08"
     },
     {
         "nombre": "laura maré en concierto",
-        "fecha": "2025-11-06"
+        "fecha": "2025-11-08"
     },
     {
         "nombre": "PLANCHANDO EL DESPECHO",
-        "fecha": "2025-11-06"
+        "fecha": "2025-11-09"
     },
     {
         "nombre": "SAUROM - EL PRINCIPITO",
@@ -45,7 +49,7 @@
     },
     {
         "nombre": "ALL WE NEED IS LOVE",
-        "fecha": "2025-11-09"
+        "fecha": "2025-11-13"
     },
     {
         "nombre": "clase/mela - el aguila descalza",
@@ -53,11 +57,11 @@
     },
     {
         "nombre": "JON SECADA",
-        "fecha": "2025-11-13"
+        "fecha": "2025-11-14"
     },
     {
         "nombre": "ARTISTAS ASTOR PLAZA",
-        "fecha": "2025-11-20"
+        "fecha": "2025-11-14"
     },
     {
         "nombre": "Teatro",
@@ -65,6 +69,6 @@
     },
     {
         "nombre": "Contacto",
-        "fecha": "2025-11-28"
+        "fecha": "2025-11-20"
     }
 ]
