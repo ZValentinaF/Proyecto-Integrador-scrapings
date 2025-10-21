@@ -49,94 +49,6 @@
     },
     {
         "tipo": "Niños y Jóvenes",
-        "nombre": "Los Sonidos De Zazous Resonaran En El Teatro El Parque",
-        "fecha_inicio": "2025-10-16",
-        "fecha_fin": "2025-10-16",
-        "hora": "7:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Teatro",
-        "nombre": "Oblivio Teatro Presenta La Esclusa",
-        "fecha_inicio": "2025-10-17",
-        "fecha_fin": "2025-10-17",
-        "hora": "7:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Viva Alkfra Un Performance Ganador De La Beca Lep En El Teatro El",
-        "fecha_inicio": "2025-10-17",
-        "fecha_fin": "2025-10-17",
-        "hora": "7:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Viva Dos Dias Recreativos Con Montunos Taller De Mascaras",
-        "fecha_inicio": "2025-10-18",
-        "fecha_fin": "2025-10-19",
-        "hora": null,
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Cazadores De Sonidos",
-        "fecha_inicio": "2025-10-18",
-        "fecha_fin": "2025-09-18",
-        "hora": null,
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "El Arte Urbano Llega Con Escenarios Moviles La Biblioteca El Tintal",
-        "fecha_inicio": "2025-10-18",
-        "fecha_fin": "2025-10-18",
-        "hora": "2:00 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "El Nino De Arena Del Festival Manuelucho Se Presenta En El Teatro El Parque",
-        "fecha_inicio": "2025-10-18",
-        "fecha_fin": "2025-10-18",
-        "hora": "3:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Teatro",
-        "nombre": "Mi Arbol Y Yo De La Corporacion El Laberinto En La Pilona",
-        "fecha_inicio": "2025-10-18",
-        "fecha_fin": "2025-10-18",
-        "hora": "5:00 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "Margot Presenta Su Disco Villain",
-        "fecha_inicio": "2025-10-18",
-        "fecha_fin": "2025-10-18",
-        "hora": "7:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Artes Plásticas y Visuales",
-        "nombre": "Encuentro De Palabra Arquitectura Emocional Cobijos Y Moradas",
-        "fecha_inicio": "2025-10-19",
-        "fecha_fin": "2025-10-19",
-        "hora": "2:00 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Tronco Fuerte Una Obra Naturalmente Divertida",
-        "fecha_inicio": "2025-10-19",
-        "fecha_fin": "2025-10-19",
-        "hora": "3:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
         "nombre": "El Conjunto Media Luna Llega Al Teatro El Parque Con Su Poder Musical",
         "fecha_inicio": "2025-10-23",
         "fecha_fin": "2025-10-23",
@@ -150,6 +62,14 @@
         "fecha_fin": "2025-10-23",
         "hora": "8:00 pm",
         "ingreso": "COSTO"
+    },
+    {
+        "tipo": "Artes Plásticas y Visuales",
+        "nombre": "Residencias Artisticas Casablanca Presenta Su Jornada De Estudios Abiertos",
+        "fecha_inicio": "2025-10-24",
+        "fecha_fin": "2025-10-24",
+        "hora": "10:00 am",
+        "ingreso": "LIBRE"
     },
     {
         "tipo": "Teatro",
@@ -184,6 +104,14 @@
         "ingreso": "COSTO"
     },
     {
+        "tipo": "Crea",
+        "nombre": "Musica Danza Teatro Y Mas Encenderan El Planetario En El Inicio De",
+        "fecha_inicio": "2025-10-25",
+        "fecha_fin": "2025-10-25",
+        "hora": "8:00 am",
+        "ingreso": "LIBRE"
+    },
+    {
         "tipo": "Artes Audiovisuales",
         "nombre": "Cinemateca Al Parque Llega La Localidad De Antonio Narino",
         "fecha_inicio": "2025-10-25",
@@ -208,6 +136,14 @@
         "ingreso": "LIBRE"
     },
     {
+        "tipo": "Música",
+        "nombre": "Inauguracion Del Festival De Musica De Todo Un Toque Xvi",
+        "fecha_inicio": "2025-10-25",
+        "fecha_fin": "2025-10-25",
+        "hora": "12:00 pm",
+        "ingreso": "LIBRE"
+    },
+    {
         "tipo": "Niños y Jóvenes",
         "nombre": "El Festival Manuelucho Presenta Klatun Una Historia Cosmica",
         "fecha_inicio": "2025-10-25",
@@ -224,11 +160,27 @@
         "ingreso": "LIBRE"
     },
     {
+        "tipo": "Literatura",
+        "nombre": "Picnic Literario Chumba La Cachumba",
+        "fecha_inicio": "2025-10-26",
+        "fecha_fin": "2025-10-26",
+        "hora": "10:00 am",
+        "ingreso": "LIBRE"
+    },
+    {
         "tipo": "Niños y Jóvenes",
         "nombre": "Preparense Para La Decima Version De Bebes Al Parque En La Ciudad",
         "fecha_inicio": "2025-10-26",
         "fecha_fin": "2025-10-26",
         "hora": "10:00 am",
+        "ingreso": "LIBRE"
+    },
+    {
+        "tipo": "Música",
+        "nombre": "Festival Raices Bogota Andina En La Media Torta",
+        "fecha_inicio": "2025-10-26",
+        "fecha_fin": "2025-10-26",
+        "hora": "2:00 pm",
         "ingreso": "LIBRE"
     },
     {

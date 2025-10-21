@@ -1,30 +1,6 @@
 [
     {
         "tipo": "MÚSICA",
-        "nombre": "Bandalos Chinos – Vándalos",
-        "fecha": "2025-10-17",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "MÚSICA",
-        "nombre": "Vuelvo a vivir, vuelvo a cantar",
-        "fecha": "2025-10-18",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "MÚSICA",
-        "nombre": "Héroes del Silencio Filarmónico – La Leyenda del Silencio",
-        "fecha": "2025-10-19",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "TEATRO",
-        "nombre": "Teatro en familia – Candyland: La fábrica de dulces",
-        "fecha": "2025-10-22",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "MÚSICA",
         "nombre": "Vallehartos con Gissell y amigos",
         "fecha": "2025-10-23",
         "ingreso": "COSTO"
@@ -32,12 +8,6 @@
     {
         "tipo": "MÚSICA",
         "nombre": "Homenaje al rock argentino",
-        "fecha": "2025-10-24",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "MÚSICA",
-        "nombre": "Ismael Serrano – Gira acústica",
         "fecha": "2025-10-25",
         "ingreso": "COSTO"
     },
@@ -50,6 +20,24 @@
     {
         "tipo": "MÚSICA",
         "nombre": "Caro Jaramillo en concierto",
+        "fecha": "2025-11-01",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "TEATRO",
+        "nombre": "Festival de Teatro Comfama San Ignacio – ¿Puedes verme?",
+        "fecha": "2025-11-03",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "MÚSICA",
+        "nombre": "Festival de Teatro Comfama San Ignacio – Orquesta de Malabares",
+        "fecha": "2025-11-08",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "MÚSICA",
+        "nombre": "Festival de Teatro Comfama San Ignacio – Amorío Tour con Esteman y Daniela Spalla",
         "fecha": "2025-11-27",
         "ingreso": "COSTO"
     },
