@@ -48,22 +48,6 @@
         "ingreso": "OTRO"
     },
     {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "El Conjunto Media Luna Llega Al Teatro El Parque Con Su Poder Musical",
-        "fecha_inicio": "2025-10-23",
-        "fecha_fin": "2025-10-23",
-        "hora": "7:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Multidisciplinar",
-        "nombre": "Botero Vive Y Se Convierte En Un Ballet",
-        "fecha_inicio": "2025-10-23",
-        "fecha_fin": "2025-10-23",
-        "hora": "8:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
         "tipo": "Artes Plásticas y Visuales",
         "nombre": "Residencias Artisticas Casablanca Presenta Su Jornada De Estudios Abiertos",
         "fecha_inicio": "2025-10-24",
@@ -224,6 +208,14 @@
         "ingreso": "COSTO"
     },
     {
+        "tipo": "Música",
+        "nombre": "Sonar En Ckweb En Vivo Encuentros Espectrales",
+        "fecha_inicio": "2025-10-31",
+        "fecha_fin": "2025-10-31",
+        "hora": "3:00 pm",
+        "ingreso": "LIBRE"
+    },
+    {
         "tipo": "Teatro",
         "nombre": "El Espectro Del Doctor Russi Memorias De Terror En La Candelaria",
         "fecha_inicio": "2025-10-31",
@@ -245,6 +237,14 @@
         "fecha_inicio": "2025-11-03",
         "fecha_fin": "2025-11-03",
         "hora": "3:00 pm",
+        "ingreso": "LIBRE"
+    },
+    {
+        "tipo": "Multidisciplinar",
+        "nombre": "Quinta Version De Ausentes Estrellas Presentes",
+        "fecha_inicio": "2025-11-04",
+        "fecha_fin": "2025-11-04",
+        "hora": "4:00 pm",
         "ingreso": "LIBRE"
     },
     {
