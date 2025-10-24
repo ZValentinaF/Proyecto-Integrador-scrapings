@@ -1,5 +1,4 @@
-# cargar_datos.py — Local-first con fallback remoto, HU-07 / HU-10 / Etiquetas en raw
-import os
+# cargar_eventos.py — Inserta todas las fuentes en la tabla 'evento' (DB: QueHayPaHacer)
 import re
 import json
 import time
@@ -13,48 +12,45 @@ import psycopg2
 DB_CONFIG = {
     "host": "awsaurorapg17-instance-1.cav2004g2f8p.us-east-1.rds.amazonaws.com",
     "port": "5432",
-    "dbname": "QueHayPaHacer",  # <-- si estás probando en 'Eventos', cámbialo aquí
+    "dbname": "QueHayPaHacer",
     "user": "postgres",
     "password": "postgres",
 }
 
 # ===================== Rutas / Fuentes ======================
 BASE_DIR = Path(__file__).resolve().parent
-FRESH_HOURS = 6  # umbral de "frescura" del JSON local
+FRESH_HOURS = 6  # horas de "frescura" del JSON local
 
 FUENTES = {
     "idartes": {
         "archivo": str(BASE_DIR / "scraping_idartes.json"),
         "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/main/scraping_idartes.json",
-        "tabla": "idartes_eventos",
         "ciudad": "Bogotá",
     },
     "pablobon": {
         "archivo": str(BASE_DIR / "scraping_teatropablotobon.json"),
         "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/main/scraping_teatropablotobon.json",
-        "tabla": "teatropablobon_eventos",
         "ciudad": "Medellín",
     },
     "plaza": {
         "archivo": str(BASE_DIR / "scraping_teatroplasa.json"),
         "url": "https://raw.githubusercontent.com/ZValentinaF/Proyecto-Integrador-scrapings/main/scraping_teatroplasa.json",
-        "tabla": "teatroplaza_eventos",
         "ciudad": "Cali",
     },
 }
 
-# ===================== Utilidades JSON ======================
+# ===================== Utilidades JSON / lectura =====================
 def limpiar_json(texto: str) -> str:
-    """Intenta limpiar texto para que sea JSON válido."""
     if texto.startswith("\ufeff"):
-        texto = texto.lstrip("\ufeff")  # quitar BOM
+        texto = texto.lstrip("\ufeff")
     texto = texto.strip()
-    if "][" in texto:  # caso típico de listas pegadas
+    if "][" in texto:
         texto = texto.replace("][", ",")
-    if not texto.startswith("["):  # buscar primer bloque de lista si hay basura
-        match = re.search(r"\[.*\]", texto, re.DOTALL)
-        if match:
-            texto = match.group(0)
+    if not texto.startswith("["):
+        import re as _re
+        m = _re.search(r"\[.*\]", texto, _re.DOTALL)
+        if m:
+            texto = m.group(0)
     return texto
 
 def es_fresco(path: str, horas: int = FRESH_HOURS) -> bool:
@@ -65,14 +61,9 @@ def es_fresco(path: str, horas: int = FRESH_HOURS) -> bool:
     return edad_horas <= horas
 
 def leer_eventos(cfg: dict):
-    """
-    Lee eventos de archivo local si existe y está 'fresco'.
-    Si no, hace fallback a la URL remota y guarda copia local.
-    """
     archivo = cfg.get("archivo")
     url = cfg.get("url")
 
-    # 1) Local "fresco"
     if archivo and es_fresco(archivo):
         with open(archivo, "r", encoding="utf-8") as f:
             txt = limpiar_json(f.read())
@@ -82,7 +73,6 @@ def leer_eventos(cfg: dict):
             import ast
             return ast.literal_eval(txt)
 
-    # 2) Fallback remoto (y guarda copia local)
     if url:
         r = requests.get(url, timeout=20)
         r.raise_for_status()
@@ -95,252 +85,128 @@ def leer_eventos(cfg: dict):
                 pass
         return data
 
-    raise FileNotFoundError("No hay archivo local fresco ni URL de respaldo definida.")
+    raise FileNotFoundError("No hay archivo local fresco ni URL definida.")
 
-# ============== HU-07 — Validación mínima ===================
-def obtener_fecha_inicio(ev: dict) -> str:
+# ===================== Validación / normalización =====================
+def obtener_fecha_inicio(ev: dict):
+    """Devuelve 'YYYY-MM-DD' si está; si no, None. No fuerza parseos raros."""
     fi = ev.get("fecha_inicio")
     if fi and fi != "N/A":
         return fi
     f = ev.get("fecha")
     if f and f != "N/A":
         return f
-    return "N/A"
+    return None
 
 def es_valido(ev: dict) -> bool:
-    nombre = ev.get("nombre")
-    if not nombre or nombre in ("N/A", "", None):
-        return False
-    fi = obtener_fecha_inicio(ev)
-    return fi not in ("N/A", "", None)
+    return bool(ev.get("nombre")) and obtener_fecha_inicio(ev) is not None
 
-# ===== Etiquetado automático (categoría / ingreso / ciudad) =====
-def inferir_categoria(ev: dict) -> str:
-    txt = " ".join([str(ev.get("tipo", "")), str(ev.get("nombre", ""))]).lower()
-    if any(k in txt for k in ("música", "musica", "concierto", "banda", "orquesta")):
-        return "MÚSICA"
-    if "teatro" in txt or "obra" in txt:
-        return "TEATRO"
-    if "danza" in txt or "ballet" in txt:
-        return "DANZA"
-    if "comedia" in txt or "stand up" in txt or "stand-up" in txt:
-        return "COMEDIA"
-    return "OTROS"
-
-def inferir_ingreso(ev: dict) -> str:
+def inferir_es_gratuito_y_precio(ev: dict):
     ingreso_raw = str(ev.get("ingreso", "")).lower()
-    if "libre" in ingreso_raw:
-        return "LIBRE"
-    if "inscrip" in ingreso_raw:
-        return "INSCRIPCION"
-    if "costo" in ingreso_raw or "$" in ingreso_raw or "bole" in ingreso_raw:
-        return "COSTO"
-    return "OTRO"
+    if "libre" in ingreso_raw or "gratuito" in ingreso_raw:
+        return True, 0.0
+    if any(x in ingreso_raw for x in ["costo", "$", "bole", "entrada"]):
+        return False, None
+    return False, None
 
-def enriquecer_raw_con_tags(ev: dict, ciudad: str) -> dict:
-    raw_obj = dict(ev)
-    tags = set(raw_obj.get("tags", []))
-    tags.add(inferir_categoria(ev))
-    tags.add(inferir_ingreso(ev))
-    if ciudad:
-        tags.add(ciudad)
-    raw_obj["tags"] = sorted(tags)
-    return raw_obj
+def slugify(texto: str) -> str:
+    s = re.sub(r"[^a-z0-9]+", "-", (texto or "").lower()).strip("-")
+    return s[:60] if s else None
 
-# ======= Detección de UNIQUE para decidir estrategia de inserción =======
-def tiene_unique(conn, tabla: str, columnas: tuple[str, ...]) -> bool:
+# ===================== ENUM: estadoeventoenum =====================
+def obtener_estado_valido(conn) -> str:
     """
-    Verifica si existe un constraint UNIQUE exactamente sobre 'columnas' en 'tabla'.
+    Lee las etiquetas válidas del ENUM estadoeventoenum y retorna la mejor opción:
+    - Prefiere 'ACTIVO' si existe,
+    - si no, 'PUBLICADO' si existe,
+    - si no, la primera etiqueta del ENUM.
     """
-    cols = list(columnas)
     with conn.cursor() as c:
         c.execute("""
-            SELECT array_agg(a.attname ORDER BY a.attnum)
-            FROM pg_constraint ct
-            JOIN pg_class cl ON cl.oid = ct.conrelid
-            JOIN pg_namespace ns ON ns.oid = cl.relnamespace
-            JOIN unnest(ct.conkey) WITH ORDINALITY AS k(attnum, ord) ON true
-            JOIN pg_attribute a ON a.attrelid = cl.oid AND a.attnum = k.attnum
-            WHERE ct.contype = 'u'
-              AND cl.relname = %s
-            GROUP BY ct.oid
-        """, (tabla,))
-        for (arr,) in c.fetchall():
-            if arr == cols:
-                return True
-    return False
+            SELECT e.enumlabel
+            FROM pg_type t
+            JOIN pg_enum e ON t.oid = e.enumtypid
+            WHERE t.typname = 'estadoeventoenum'
+            ORDER BY e.enumsortorder;
+        """)
+        rows = [r[0] for r in c.fetchall()]
+    if not rows:
+        # Fallback duro (no debería pasar si la columna es ENUM correcto)
+        return 'ACTIVO'
+    prefs = ["ACTIVO", "PUBLICADO"]
+    for p in prefs:
+        if p in rows:
+            return p
+    return rows[0]  # primer valor del enum
 
-# ===================== Carga principal ======================
+# ===================== Carga principal =====================
 def cargar_datos():
     conn = None
     try:
         conn = psycopg2.connect(**DB_CONFIG)
         cur = conn.cursor()
-        print("Conexion establecida")
+        print(f"✅ Conexión establecida con la base '{DB_CONFIG['dbname']}'")
 
-        # detectar si tenemos UNIQUE por tabla
-        unique_map = {
-            "idartes_eventos": tiene_unique(conn, "idartes_eventos", ("nombre", "fecha_inicio", "fecha_fin")),
-            "teatropablobon_eventos": tiene_unique(conn, "teatropablobon_eventos", ("nombre", "fecha")),
-            "teatroplaza_eventos": tiene_unique(conn, "teatroplaza_eventos", ("nombre", "fecha")),
-        }
-
-        resumen_log = []
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        estado_enum_seguro = obtener_estado_valido(conn)
 
         for fuente, cfg in FUENTES.items():
-            tabla = cfg["tabla"]
-            ciudad = cfg.get("ciudad", "")
-
-            print(f"\nCargando {fuente} -> {tabla}")
+            print(f"\n📥 Cargando {fuente} → evento")
             try:
                 eventos = leer_eventos(cfg)
             except Exception as e:
-                print(f"  Error leyendo datos de la fuente '{fuente}': {e}")
+                print(f"   ❌ Error leyendo datos: {e}")
                 continue
 
             if not isinstance(eventos, list):
                 eventos = [eventos]
 
-            # HU-07 — Validación
-            validos, invalidos = [], []
-            for ev in eventos:
-                if es_valido(ev):
-                    validos.append(ev)
-                else:
-                    invalidos.append(ev)
+            validos = [ev for ev in eventos if es_valido(ev)]
+            invalidos = [ev for ev in eventos if not es_valido(ev)]
 
-            print(f"   -> {len(eventos)} eventos encontrados")
-            print(f"   Validos: {len(validos)}")
-            print(f"   Invalidos: {len(invalidos)}")
+            print(f"   → {len(eventos)} eventos encontrados")
+            print(f"   ✅ Válidos: {len(validos)}")
+            print(f"   ❌ Inválidos: {len(invalidos)}")
             if invalidos:
-                print("   Ejemplos de invalidos:")
+                print("   Ejemplos de inválidos:")
                 for ejemplo in invalidos[:3]:
                     print(f"   - {ejemplo}")
 
-            resumen_log.append(f"[{timestamp}] {fuente}: {len(validos)} validos / {len(invalidos)} invalidos")
-
-            # Inserción por tabla (usa ON CONFLICT si hay UNIQUE; si no, fallback a WHERE NOT EXISTS)
-            use_on_conflict = unique_map.get(tabla, False)
-
             for ev in validos:
-                raw_obj = enriquecer_raw_con_tags(ev, ciudad)
-                raw_json = json.dumps(raw_obj, ensure_ascii=False)
+                titulo = ev.get("nombre", "Evento sin título")
+                descripcion = ev.get("tipo", "Sin descripción")
+                estado = estado_enum_seguro
+                imagen_url = None
+                url_oficial = ev.get("url", None)
+                es_gratuito, precio_desde = inferir_es_gratuito_y_precio(ev)
+                moneda = "COP"
+                slug = slugify(titulo)
+                fecha_pub = obtener_fecha_inicio(ev)  # se envía como string 'YYYY-MM-DD'
 
-                if tabla == "idartes_eventos":
-                    fecha_inicio = obtener_fecha_inicio(ev)
-                    if use_on_conflict:
-                        cur.execute(f"""
-                            INSERT INTO {tabla} (tipo, nombre, fecha_inicio, fecha_fin, ingreso, raw)
-                            VALUES (%s, %s, %s, %s, %s, %s)
-                            ON CONFLICT (nombre, fecha_inicio, fecha_fin) DO NOTHING;
-                        """, (
-                            ev.get("tipo", "N/A"),
-                            ev.get("nombre", "N/A"),
-                            fecha_inicio,
-                            ev.get("fecha_fin", None),
-                            inferir_ingreso(ev),
-                            raw_json,
-                        ))
-                    else:
-                        cur.execute(f"""
-                            INSERT INTO {tabla} (tipo, nombre, fecha_inicio, fecha_fin, ingreso, raw)
-                            SELECT %s, %s, %s, %s, %s, %s
-                            WHERE NOT EXISTS (
-                                SELECT 1 FROM {tabla} i
-                                WHERE i.nombre = %s
-                                  AND i.fecha_inicio = %s
-                                  AND i.fecha_fin IS NOT DISTINCT FROM %s
-                            );
-                        """, (
-                            ev.get("tipo", "N/A"),
-                            ev.get("nombre", "N/A"),
-                            fecha_inicio,
-                            ev.get("fecha_fin", None),
-                            inferir_ingreso(ev),
-                            raw_json,
-                            ev.get("nombre", "N/A"),
-                            fecha_inicio,
-                            ev.get("fecha_fin", None),
-                        ))
-
-                elif tabla == "teatropablobon_eventos":
-                    fecha = ev.get("fecha") or obtener_fecha_inicio(ev) or "N/A"
-                    if use_on_conflict:
-                        cur.execute(f"""
-                            INSERT INTO {tabla} (tipo, nombre, fecha, ingreso, raw)
-                            VALUES (%s, %s, %s, %s, %s)
-                            ON CONFLICT (nombre, fecha) DO NOTHING;
-                        """, (
-                            ev.get("tipo", "N/A"),
-                            ev.get("nombre", "N/A"),
-                            fecha,
-                            inferir_ingreso(ev),
-                            raw_json,
-                        ))
-                    else:
-                        cur.execute(f"""
-                            INSERT INTO {tabla} (tipo, nombre, fecha, ingreso, raw)
-                            SELECT %s, %s, %s, %s, %s
-                            WHERE NOT EXISTS (
-                                SELECT 1 FROM {tabla} t
-                                WHERE t.nombre = %s AND t.fecha = %s
-                            );
-                        """, (
-                            ev.get("tipo", "N/A"),
-                            ev.get("nombre", "N/A"),
-                            fecha,
-                            inferir_ingreso(ev),
-                            raw_json,
-                            ev.get("nombre", "N/A"),
-                            fecha,
-                        ))
-
-                elif tabla == "teatroplaza_eventos":
-                    fecha = ev.get("fecha") or obtener_fecha_inicio(ev) or "N/A"
-                    if use_on_conflict:
-                        cur.execute(f"""
-                            INSERT INTO {tabla} (nombre, fecha, raw)
-                            VALUES (%s, %s, %s)
-                            ON CONFLICT (nombre, fecha) DO NOTHING;
-                        """, (
-                            ev.get("nombre", "N/A"),
-                            fecha,
-                            raw_json,
-                        ))
-                    else:
-                        cur.execute(f"""
-                            INSERT INTO {tabla} (nombre, fecha, raw)
-                            SELECT %s, %s, %s
-                            WHERE NOT EXISTS (
-                                SELECT 1 FROM {tabla} p
-                                WHERE p.nombre = %s AND p.fecha = %s
-                            );
-                        """, (
-                            ev.get("nombre", "N/A"),
-                            fecha,
-                            raw_json,
-                            ev.get("nombre", "N/A"),
-                            fecha,
-                        ))
+                # Evitar duplicados sin requerir UNIQUE: usa (titulo, fecha_publicacion)
+                cur.execute("""
+                    INSERT INTO evento 
+                    (titulo, descripcion, estado, imagen_url, organizador_id, lugar_id,
+                     url_oficial, es_gratuito, precio_desde, moneda, slug, fecha_publicacion)
+                    SELECT %s, %s, %s, %s, NULL, NULL, %s, %s, %s, %s, %s, %s
+                    WHERE NOT EXISTS (
+                        SELECT 1 FROM evento e
+                        WHERE e.titulo = %s
+                          AND e.fecha_publicacion = %s
+                    );
+                """, (
+                    titulo, descripcion, estado, imagen_url,
+                    url_oficial, es_gratuito, precio_desde, moneda, slug, fecha_pub,
+                    titulo, fecha_pub
+                ))
 
             conn.commit()
 
-        print("\nDatos cargados correctamente.")
-
-        # HU-10 — Guardar resumen en log local del proyecto
-        log_path = BASE_DIR / "resumen_extracciones.log"
-        try:
-            with open(log_path, "a", encoding="utf-8") as logf:
-                logf.write("\n".join(resumen_log) + "\n")
-        except Exception:
-            pass
-
+        print("\n🎉 Datos cargados correctamente en 'evento'.")
         cur.close()
         conn.close()
 
     except Exception as e:
-        print("Error general al cargar datos:", e)
+        print("❌ Error general al cargar datos:", e)
         if conn:
             try:
                 conn.rollback()
