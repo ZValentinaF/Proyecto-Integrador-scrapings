@@ -1,18 +1,6 @@
 [
     {
         "tipo": "MÚSICA",
-        "nombre": "Vallehartos con Gissell y amigos",
-        "fecha": "2025-10-23",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "MÚSICA",
-        "nombre": "Homenaje al rock argentino",
-        "fecha": "2025-10-25",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "MÚSICA",
         "nombre": "ARA MALIKIAN: INTRUSO",
         "fecha": "2025-10-30",
         "ingreso": "COSTO"
@@ -32,12 +20,30 @@
     {
         "tipo": "MÚSICA",
         "nombre": "Festival de Teatro Comfama San Ignacio – Orquesta de Malabares",
+        "fecha": "2025-11-06",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "TEATRO",
+        "nombre": "Festival de Teatro Comfama San Ignacio – Voyager",
         "fecha": "2025-11-08",
         "ingreso": "COSTO"
     },
     {
         "tipo": "MÚSICA",
         "nombre": "Festival de Teatro Comfama San Ignacio – Amorío Tour con Esteman y Daniela Spalla",
+        "fecha": "2025-11-11",
+        "ingreso": "COSTO"
+    },
+    {
+        "tipo": "TEATRO",
+        "nombre": "Martes al Teatro: ‘Las mamás no lloran, las mamás facturan’ con Tola y Maruja",
+        "fecha": "2025-11-26",
+        "ingreso": "LIBRE"
+    },
+    {
+        "tipo": "TEATRO",
+        "nombre": "‘Viernes Santo’ de Teatriados",
         "fecha": "2025-11-27",
         "ingreso": "COSTO"
     },

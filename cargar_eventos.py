@@ -13,7 +13,7 @@ import psycopg2
 DB_CONFIG = {
     "host": "awsaurorapg17-instance-1.cav2004g2f8p.us-east-1.rds.amazonaws.com",
     "port": "5432",
-    "dbname": "QueHayPaHacer",
+    "dbname": "QueHayPaHacer",  # <-- si estás probando en 'Eventos', cámbialo aquí
     "user": "postgres",
     "password": "postgres",
 }
@@ -92,7 +92,6 @@ def leer_eventos(cfg: dict):
                 with open(archivo, "w", encoding="utf-8") as f:
                     json.dump(data, f, ensure_ascii=False, indent=2)
             except Exception:
-                # si no se puede guardar, igual retornamos los datos
                 pass
         return data
 
@@ -100,11 +99,6 @@ def leer_eventos(cfg: dict):
 
 # ============== HU-07 — Validación mínima ===================
 def obtener_fecha_inicio(ev: dict) -> str:
-    """
-    Devuelve la fecha 'clave':
-    - Si existe 'fecha_inicio' válida, úsala.
-    - Si no, usa 'fecha' (fuentes de fecha simple).
-    """
     fi = ev.get("fecha_inicio")
     if fi and fi != "N/A":
         return fi
@@ -114,11 +108,6 @@ def obtener_fecha_inicio(ev: dict) -> str:
     return "N/A"
 
 def es_valido(ev: dict) -> bool:
-    """
-    Reglas mínimas:
-    - nombre no vacío
-    - alguna fecha válida (fecha_inicio o fecha)
-    """
     nombre = ev.get("nombre")
     if not nombre or nombre in ("N/A", "", None):
         return False
@@ -149,9 +138,6 @@ def inferir_ingreso(ev: dict) -> str:
     return "OTRO"
 
 def enriquecer_raw_con_tags(ev: dict, ciudad: str) -> dict:
-    """
-    Agrega 'tags' al raw con categoría, ingreso y ciudad (no cambia el esquema).
-    """
     raw_obj = dict(ev)
     tags = set(raw_obj.get("tags", []))
     tags.add(inferir_categoria(ev))
@@ -161,6 +147,29 @@ def enriquecer_raw_con_tags(ev: dict, ciudad: str) -> dict:
     raw_obj["tags"] = sorted(tags)
     return raw_obj
 
+# ======= Detección de UNIQUE para decidir estrategia de inserción =======
+def tiene_unique(conn, tabla: str, columnas: tuple[str, ...]) -> bool:
+    """
+    Verifica si existe un constraint UNIQUE exactamente sobre 'columnas' en 'tabla'.
+    """
+    cols = list(columnas)
+    with conn.cursor() as c:
+        c.execute("""
+            SELECT array_agg(a.attname ORDER BY a.attnum)
+            FROM pg_constraint ct
+            JOIN pg_class cl ON cl.oid = ct.conrelid
+            JOIN pg_namespace ns ON ns.oid = cl.relnamespace
+            JOIN unnest(ct.conkey) WITH ORDINALITY AS k(attnum, ord) ON true
+            JOIN pg_attribute a ON a.attrelid = cl.oid AND a.attnum = k.attnum
+            WHERE ct.contype = 'u'
+              AND cl.relname = %s
+            GROUP BY ct.oid
+        """, (tabla,))
+        for (arr,) in c.fetchall():
+            if arr == cols:
+                return True
+    return False
+
 # ===================== Carga principal ======================
 def cargar_datos():
     conn = None
@@ -168,6 +177,13 @@ def cargar_datos():
         conn = psycopg2.connect(**DB_CONFIG)
         cur = conn.cursor()
         print("Conexion establecida")
+
+        # detectar si tenemos UNIQUE por tabla
+        unique_map = {
+            "idartes_eventos": tiene_unique(conn, "idartes_eventos", ("nombre", "fecha_inicio", "fecha_fin")),
+            "teatropablobon_eventos": tiene_unique(conn, "teatropablobon_eventos", ("nombre", "fecha")),
+            "teatroplaza_eventos": tiene_unique(conn, "teatroplaza_eventos", ("nombre", "fecha")),
+        }
 
         resumen_log = []
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -202,57 +218,111 @@ def cargar_datos():
                 for ejemplo in invalidos[:3]:
                     print(f"   - {ejemplo}")
 
-            # HU-10 — Resumen por fuente (para log)
             resumen_log.append(f"[{timestamp}] {fuente}: {len(validos)} validos / {len(invalidos)} invalidos")
 
-            # Inserción por tabla (sin cambiar esquema)
+            # Inserción por tabla (usa ON CONFLICT si hay UNIQUE; si no, fallback a WHERE NOT EXISTS)
+            use_on_conflict = unique_map.get(tabla, False)
+
             for ev in validos:
                 raw_obj = enriquecer_raw_con_tags(ev, ciudad)
                 raw_json = json.dumps(raw_obj, ensure_ascii=False)
 
                 if tabla == "idartes_eventos":
-                    # columnas: (tipo, nombre, fecha_inicio, fecha_fin, ingreso, raw)
                     fecha_inicio = obtener_fecha_inicio(ev)
-                    cur.execute(f"""
-                        INSERT INTO {tabla} (tipo, nombre, fecha_inicio, fecha_fin, ingreso, raw)
-                        VALUES (%s, %s, %s, %s, %s, %s)
-                        ON CONFLICT (nombre, fecha_inicio, fecha_fin) DO NOTHING;
-                    """, (
-                        ev.get("tipo", "N/A"),
-                        ev.get("nombre", "N/A"),
-                        fecha_inicio,
-                        ev.get("fecha_fin", None),
-                        inferir_ingreso(ev),
-                        raw_json,
-                    ))
+                    if use_on_conflict:
+                        cur.execute(f"""
+                            INSERT INTO {tabla} (tipo, nombre, fecha_inicio, fecha_fin, ingreso, raw)
+                            VALUES (%s, %s, %s, %s, %s, %s)
+                            ON CONFLICT (nombre, fecha_inicio, fecha_fin) DO NOTHING;
+                        """, (
+                            ev.get("tipo", "N/A"),
+                            ev.get("nombre", "N/A"),
+                            fecha_inicio,
+                            ev.get("fecha_fin", None),
+                            inferir_ingreso(ev),
+                            raw_json,
+                        ))
+                    else:
+                        cur.execute(f"""
+                            INSERT INTO {tabla} (tipo, nombre, fecha_inicio, fecha_fin, ingreso, raw)
+                            SELECT %s, %s, %s, %s, %s, %s
+                            WHERE NOT EXISTS (
+                                SELECT 1 FROM {tabla} i
+                                WHERE i.nombre = %s
+                                  AND i.fecha_inicio = %s
+                                  AND i.fecha_fin IS NOT DISTINCT FROM %s
+                            );
+                        """, (
+                            ev.get("tipo", "N/A"),
+                            ev.get("nombre", "N/A"),
+                            fecha_inicio,
+                            ev.get("fecha_fin", None),
+                            inferir_ingreso(ev),
+                            raw_json,
+                            ev.get("nombre", "N/A"),
+                            fecha_inicio,
+                            ev.get("fecha_fin", None),
+                        ))
 
                 elif tabla == "teatropablobon_eventos":
-                    # columnas: (tipo, nombre, fecha, ingreso, raw)
                     fecha = ev.get("fecha") or obtener_fecha_inicio(ev) or "N/A"
-                    cur.execute(f"""
-                        INSERT INTO {tabla} (tipo, nombre, fecha, ingreso, raw)
-                        VALUES (%s, %s, %s, %s, %s)
-                        ON CONFLICT (nombre, fecha) DO NOTHING;
-                    """, (
-                        ev.get("tipo", "N/A"),
-                        ev.get("nombre", "N/A"),
-                        fecha,
-                        inferir_ingreso(ev),
-                        raw_json,
-                    ))
+                    if use_on_conflict:
+                        cur.execute(f"""
+                            INSERT INTO {tabla} (tipo, nombre, fecha, ingreso, raw)
+                            VALUES (%s, %s, %s, %s, %s)
+                            ON CONFLICT (nombre, fecha) DO NOTHING;
+                        """, (
+                            ev.get("tipo", "N/A"),
+                            ev.get("nombre", "N/A"),
+                            fecha,
+                            inferir_ingreso(ev),
+                            raw_json,
+                        ))
+                    else:
+                        cur.execute(f"""
+                            INSERT INTO {tabla} (tipo, nombre, fecha, ingreso, raw)
+                            SELECT %s, %s, %s, %s, %s
+                            WHERE NOT EXISTS (
+                                SELECT 1 FROM {tabla} t
+                                WHERE t.nombre = %s AND t.fecha = %s
+                            );
+                        """, (
+                            ev.get("tipo", "N/A"),
+                            ev.get("nombre", "N/A"),
+                            fecha,
+                            inferir_ingreso(ev),
+                            raw_json,
+                            ev.get("nombre", "N/A"),
+                            fecha,
+                        ))
 
                 elif tabla == "teatroplaza_eventos":
-                    # columnas: (nombre, fecha, raw)
                     fecha = ev.get("fecha") or obtener_fecha_inicio(ev) or "N/A"
-                    cur.execute(f"""
-                        INSERT INTO {tabla} (nombre, fecha, raw)
-                        VALUES (%s, %s, %s)
-                        ON CONFLICT (nombre, fecha) DO NOTHING;
-                    """, (
-                        ev.get("nombre", "N/A"),
-                        fecha,
-                        raw_json,
-                    ))
+                    if use_on_conflict:
+                        cur.execute(f"""
+                            INSERT INTO {tabla} (nombre, fecha, raw)
+                            VALUES (%s, %s, %s)
+                            ON CONFLICT (nombre, fecha) DO NOTHING;
+                        """, (
+                            ev.get("nombre", "N/A"),
+                            fecha,
+                            raw_json,
+                        ))
+                    else:
+                        cur.execute(f"""
+                            INSERT INTO {tabla} (nombre, fecha, raw)
+                            SELECT %s, %s, %s
+                            WHERE NOT EXISTS (
+                                SELECT 1 FROM {tabla} p
+                                WHERE p.nombre = %s AND p.fecha = %s
+                            );
+                        """, (
+                            ev.get("nombre", "N/A"),
+                            fecha,
+                            raw_json,
+                            ev.get("nombre", "N/A"),
+                            fecha,
+                        ))
 
             conn.commit()
 
@@ -264,7 +334,6 @@ def cargar_datos():
             with open(log_path, "a", encoding="utf-8") as logf:
                 logf.write("\n".join(resumen_log) + "\n")
         except Exception:
-            # no interrumpas la carga si falla el log
             pass
 
         cur.close()
@@ -281,7 +350,6 @@ def cargar_datos():
                 conn.close()
             except Exception:
                 pass
-
 
 if __name__ == "__main__":
     cargar_datos()
