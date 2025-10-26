@@ -5,7 +5,8 @@
         "fecha_inicio": "2025-09-17",
         "fecha_fin": "2025-11-06",
         "hora": null,
-        "ingreso": "LIBRE"
+        "ingreso": "LIBRE",
+        "url": "https://www.idartes.gov.co/es/agenda/conversatorio/ciclo-de-lecturas-para-acompanar-el-duelo"
     },
     {
         "tipo": "Artes Plásticas y Visuales",
@@ -13,7 +14,8 @@
         "fecha_inicio": "2025-09-20",
         "fecha_fin": "2025-11-09",
         "hora": null,
-        "ingreso": "LIBRE"
+        "ingreso": "LIBRE",
+        "url": "https://www.idartes.gov.co/es/agenda/experiencia-artistica/bienal-internacional-de-arte-y-ciudad-bog25"
     },
     {
         "tipo": "Artes Plásticas y Visuales",
@@ -21,7 +23,8 @@
         "fecha_inicio": "2025-09-25",
         "fecha_fin": "2025-11-10",
         "hora": null,
-        "ingreso": "LIBRE"
+        "ingreso": "LIBRE",
+        "url": "https://www.idartes.gov.co/es/agenda/exposicion/realmix-las-ficciones-de-la-materia"
     },
     {
         "tipo": "Artes Plásticas y Visuales",
@@ -29,15 +32,17 @@
         "fecha_inicio": "2025-10-02",
         "fecha_fin": "2025-11-17",
         "hora": null,
-        "ingreso": "LIBRE"
+        "ingreso": "LIBRE",
+        "url": "https://www.idartes.gov.co/es/agenda/exposicion/iv-salon-de-artistas-arte-la-ky"
     },
     {
         "tipo": "Niños y Jóvenes",
-        "nombre": "La Casa Vacia Nuevo Libro Digital Interactivo Para Ninas Y Ninos De   Anos",
+        "nombre": "La Casa Vacia Nuevo Libro Digital Interactivo Para Ninas Y Ninos De Anos",
         "fecha_inicio": "2025-10-04",
         "fecha_fin": "2025-10-31",
         "hora": null,
-        "ingreso": "OTRO"
+        "ingreso": "OTRO",
+        "url": "https://www.idartes.gov.co/es/agenda/lanzamiento/la-casa-vacia-nuevo-libro-digital-interactivo-para-ninas-y-ninos-de-0-6-anos"
     },
     {
         "tipo": "Niños y Jóvenes",
@@ -45,119 +50,8 @@
         "fecha_inicio": "2025-10-09",
         "fecha_fin": "2025-12-31",
         "hora": null,
-        "ingreso": "OTRO"
-    },
-    {
-        "tipo": "Artes Plásticas y Visuales",
-        "nombre": "Residencias Artisticas Casablanca Presenta Su Jornada De Estudios Abiertos",
-        "fecha_inicio": "2025-10-24",
-        "fecha_fin": "2025-10-24",
-        "hora": "10:00 am",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Teatro",
-        "nombre": "Tronco Fuerte Una Obra Naturalmente Divertida",
-        "fecha_inicio": "2025-10-24",
-        "fecha_fin": "2025-10-24",
-        "hora": "3:00 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Teatro",
-        "nombre": "Solo Cosas Maravillosas",
-        "fecha_inicio": "2025-10-24",
-        "fecha_fin": "2025-10-24",
-        "hora": "7:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Danza Y Stand Comedy Con Las Cuarentonas En El Teatro El Parque",
-        "fecha_inicio": "2025-10-24",
-        "fecha_fin": "2025-10-24",
-        "hora": "7:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "Zeta Bosio El Bajista Original De Soda Stereo Hara Temblar Bogota",
-        "fecha_inicio": "2025-10-24",
-        "fecha_fin": "2025-10-24",
-        "hora": "8:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Crea",
-        "nombre": "Musica Danza Teatro Y Mas Encenderan El Planetario En El Inicio De",
-        "fecha_inicio": "2025-10-25",
-        "fecha_fin": "2025-10-25",
-        "hora": "8:00 am",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Artes Audiovisuales",
-        "nombre": "Cinemateca Al Parque Llega La Localidad De Antonio Narino",
-        "fecha_inicio": "2025-10-25",
-        "fecha_fin": "2025-10-25",
-        "hora": "10:00 am",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Un Monstruo Tierno Y Muy Verde Llega La Virgilio",
-        "fecha_inicio": "2025-10-25",
-        "fecha_fin": "2025-10-25",
-        "hora": "11:00 am",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "La Musica Colombiana Llega La Localidad De Kennedy",
-        "fecha_inicio": "2025-10-25",
-        "fecha_fin": "2025-10-25",
-        "hora": "11:00 am",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "Inauguracion Del Festival De Musica De Todo Un Toque Xvi",
-        "fecha_inicio": "2025-10-25",
-        "fecha_fin": "2025-10-25",
-        "hora": "12:00 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "El Festival Manuelucho Presenta Klatun Una Historia Cosmica",
-        "fecha_inicio": "2025-10-25",
-        "fecha_fin": "2025-10-25",
-        "hora": "3:00 pm",
-        "ingreso": "COSTO"
-    },
-    {
-        "tipo": "Música",
-        "nombre": "Musica Filarmonica Interpretada Por Ninas Ninos Y Adolescentes Llega San",
-        "fecha_inicio": "2025-10-25",
-        "fecha_fin": "2025-10-25",
-        "hora": "4:00 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Literatura",
-        "nombre": "Picnic Literario Chumba La Cachumba",
-        "fecha_inicio": "2025-10-26",
-        "fecha_fin": "2025-10-26",
-        "hora": "10:00 am",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Preparense Para La Decima Version De Bebes Al Parque En La Ciudad",
-        "fecha_inicio": "2025-10-26",
-        "fecha_fin": "2025-10-26",
-        "hora": "10:00 am",
-        "ingreso": "LIBRE"
+        "ingreso": "OTRO",
+        "url": "https://www.idartes.gov.co/es/agenda/lanzamiento/estreno-del-libro-digital-el-dragon-del-agua"
     },
     {
         "tipo": "Música",
@@ -165,15 +59,8 @@
         "fecha_inicio": "2025-10-26",
         "fecha_fin": "2025-10-26",
         "hora": "2:00 pm",
-        "ingreso": "LIBRE"
-    },
-    {
-        "tipo": "Niños y Jóvenes",
-        "nombre": "Un Son En Mi Mansion Regresa Al Teatro El Parque Con Ritmo Y Sabor",
-        "fecha_inicio": "2025-10-26",
-        "fecha_fin": "2025-10-26",
-        "hora": "3:00 pm",
-        "ingreso": "COSTO"
+        "ingreso": "LIBRE",
+        "url": "https://www.idartes.gov.co/es/agenda/presentacion/festival-raices-bogota-andina-en-la-media-torta"
     },
     {
         "tipo": "Danza",
@@ -181,7 +68,8 @@
         "fecha_inicio": "2025-10-28",
         "fecha_fin": "2025-10-28",
         "hora": "3:40 pm",
-        "ingreso": "LIBRE"
+        "ingreso": "LIBRE",
+        "url": "https://www.idartes.gov.co/es/agenda/presentacion/yuu-bar-tas-llega-al-auditorio-ied-misael-pastrana-en-la-localidad-de-rafael"
     },
     {
         "tipo": "Danza",
@@ -189,7 +77,8 @@
         "fecha_inicio": "2025-10-30",
         "fecha_fin": "2025-10-30",
         "hora": "10:00 am",
-        "ingreso": "LIBRE"
+        "ingreso": "LIBRE",
+        "url": "https://www.idartes.gov.co/es/agenda/presentacion/segunda-funcion-de-yuu-bar-tas-en-el-jardin-infantil-funtalentum-de-la"
     },
     {
         "tipo": "Artes Audiovisuales",
@@ -197,7 +86,8 @@
         "fecha_inicio": "2025-10-30",
         "fecha_fin": "2025-10-30",
         "hora": "5:30 pm",
-        "ingreso": "LIBRE"
+        "ingreso": "LIBRE",
+        "url": "https://www.idartes.gov.co/es/agenda/proyeccion-cinematografica/batman-regresa-en-el-centro-felicidad-chapinero"
     },
     {
         "tipo": "Teatro",
@@ -205,7 +95,8 @@
         "fecha_inicio": "2025-10-30",
         "fecha_fin": "2025-10-30",
         "hora": "8:00 pm",
-        "ingreso": "COSTO"
+        "ingreso": "COSTO",
+        "url": "https://www.idartes.gov.co/es/agenda/presentacion/gypsy-express-con-la-gata-cirko-y-burning-caravan"
     },
     {
         "tipo": "Música",
@@ -213,7 +104,8 @@
         "fecha_inicio": "2025-10-31",
         "fecha_fin": "2025-10-31",
         "hora": "3:00 pm",
-        "ingreso": "LIBRE"
+        "ingreso": "LIBRE",
+        "url": "https://www.idartes.gov.co/es/agenda/concierto/sonar-en-ckweb-en-vivo-encuentros-espectrales"
     },
     {
         "tipo": "Teatro",
@@ -221,7 +113,8 @@
         "fecha_inicio": "2025-10-31",
         "fecha_fin": "2025-10-31",
         "hora": "7:00 pm",
-        "ingreso": "COSTO"
+        "ingreso": "COSTO",
+        "url": "https://www.idartes.gov.co/es/agenda/obra-de-teatro/el-espectro-del-doctor-russi-memorias-de-terror-en-la-candelaria"
     },
     {
         "tipo": "Multidisciplinar",
@@ -229,7 +122,8 @@
         "fecha_inicio": "2025-10-31",
         "fecha_fin": "2025-10-31",
         "hora": "8:00 pm",
-        "ingreso": "LIBRE"
+        "ingreso": "LIBRE",
+        "url": "https://www.idartes.gov.co/es/agenda/concierto/la-noche-de-halloween-se-celebra-con-el-caleidoscopio-sonoro-de-los-escenarios"
     },
     {
         "tipo": "Música",
@@ -237,7 +131,8 @@
         "fecha_inicio": "2025-11-03",
         "fecha_fin": "2025-11-03",
         "hora": "3:00 pm",
-        "ingreso": "LIBRE"
+        "ingreso": "LIBRE",
+        "url": "https://www.idartes.gov.co/es/agenda/concierto/maria-mulata-con-colcha-de-retazos"
     },
     {
         "tipo": "Multidisciplinar",
@@ -245,7 +140,8 @@
         "fecha_inicio": "2025-11-04",
         "fecha_fin": "2025-11-04",
         "hora": "4:00 pm",
-        "ingreso": "LIBRE"
+        "ingreso": "LIBRE",
+        "url": "https://www.idartes.gov.co/es/agenda/encuentro/quinta-version-de-ausentes-estrellas-presentes"
     },
     {
         "tipo": "Música",
@@ -253,7 +149,8 @@
         "fecha_inicio": "2025-11-05",
         "fecha_fin": "2025-11-05",
         "hora": "8:00 pm",
-        "ingreso": "LIBRE"
+        "ingreso": "LIBRE",
+        "url": "https://www.idartes.gov.co/es/agenda/concierto/nicoyembe-presenta-entre-mares-y-rios-mi-voz-es-historia"
     },
     {
         "tipo": "Teatro",
@@ -261,7 +158,8 @@
         "fecha_inicio": "2025-11-07",
         "fecha_fin": "2025-11-07",
         "hora": "7:00 pm",
-        "ingreso": "COSTO"
+        "ingreso": "COSTO",
+        "url": "https://www.idartes.gov.co/es/agenda/obra-de-teatro/bacata-producciones-presenta-plomo"
     },
     {
         "tipo": "Teatro",
@@ -269,7 +167,8 @@
         "fecha_inicio": "2025-11-14",
         "fecha_fin": "2025-11-14",
         "hora": "7:00 pm",
-        "ingreso": "COSTO"
+        "ingreso": "COSTO",
+        "url": "https://www.idartes.gov.co/es/agenda/obra-de-teatro/la-pajarera-gestos-femeninos-de-resistencia"
     },
     {
         "tipo": "Niños y Jóvenes",
@@ -277,7 +176,8 @@
         "fecha_inicio": "2025-11-17",
         "fecha_fin": "2025-11-17",
         "hora": "4:00 pm",
-        "ingreso": "COSTO"
+        "ingreso": "COSTO",
+        "url": "https://www.idartes.gov.co/es/agenda/obra-de-teatro/buri-un-viaje-magico-de-titeres"
     },
     {
         "tipo": "Teatro",
@@ -285,6 +185,7 @@
         "fecha_inicio": "2025-11-28",
         "fecha_fin": "2025-11-28",
         "hora": "7:00 pm",
-        "ingreso": "COSTO"
+        "ingreso": "COSTO",
+        "url": "https://www.idartes.gov.co/es/agenda/obra-de-teatro/christian-carrillo-interpreta-gallinazo-departamental"
     }
 ]
